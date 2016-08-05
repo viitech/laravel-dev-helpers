@@ -8,5 +8,8 @@
       "name": "A7madev",
       "email": "a7madev@gmail.com"
     }
-  ]
+  ],
+  "require": {
+    "a7madev/php-dev-helpers": "dev-master"
+  }
 }
