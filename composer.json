@@ -1,0 +1,12 @@
+{
+  "name": "a7madev/laravel-dev-helpers",
+  "description": "Laravel Dev Helper Functions",
+  "minimum-stability": "dev",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "A7madev",
+      "email": "a7madev@gmail.com"
+    }
+  ]
+}
