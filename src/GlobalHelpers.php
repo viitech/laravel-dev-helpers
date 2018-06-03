@@ -307,14 +307,50 @@ class GlobalHelpers
     }
 
     /**
-     * Validate Variable
+     * Check if variable is valid
      * @param $variable
      * @return bool
      */
-    public static function validateVariable($variable)
+    public static function isValidVariable($variable)
     {
         if(is_string($variable)) $variable = trim($variable);
         return isset($variable) && !is_null($variable) && !empty($variable);
     }
+
+    /**
+     * Return value from nullable object
+     * @param $data
+     * @param $field
+     * @return null|string
+     */
+    public static function returnValueFromNullableObject($data, $field)
+    {
+        try {
+            if (is_null($data)) {
+                return null;
+            }
+            return $data->$field;
+        } catch (Exception $e) {
+            return null;
+        }
+    }
+
+    /**
+     * Return Integer
+     * @param $int
+     * @return null|integer
+     */
+    public static function returnInteger($int)
+    {
+        try {
+            if (is_null($int)) {
+                return 0;
+            }
+            return (int) $int;
+        } catch (Exception $e) {
+            return 0;
+        }
+    }
+
 }
 

@@ -23,6 +23,10 @@
 - Is String English? `\VIITech\Helpers\GlobalHelpers::isEnglish()`
 - URL Exists? `\VIITech\Helpers\GlobalHelpers::urlExists()`
 - Get Web Page Content `\VIITech\Helpers\GlobalHelpers::getWebPageContent()`
+- Check if variable is valid `\VIITech\Helpers\GlobalHelpers::isValidVariable()`
+- Return value from nullable object `\VIITech\Helpers\GlobalHelpers::returnValueFromNullableObject()`
+- Return value from nullable object `\VIITech\Helpers\GlobalHelpers::getUniqueIDsFromArray()`
+- Return Integer `\VIITech\Helpers\GlobalHelpers::returnInteger()`
 
 ### Gitlab Helpers
 - List All Gitlab Projects `\VIITech\Helpers\GitlabHelpers::listGitlabProjects()`

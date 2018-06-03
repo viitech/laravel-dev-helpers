@@ -13,7 +13,7 @@ class FirebaseHelpers
      * @param string $suffix_option UNGUESSABLE or SHORT
      * @return string|null
      */
-    function generateDynamicLink($api_key, $longDynamicLink, $suffix_option = "UNGUESSABLE")
+    public static function generateDynamicLink($api_key, $longDynamicLink, $suffix_option = "UNGUESSABLE")
     {
         try {
             $guzzle_request = (new \GuzzleHttp\Client())->request('POST', 'https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=' . $api_key, [
