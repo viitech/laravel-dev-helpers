@@ -8,8 +8,5 @@
       "name": "VII Tech Solutions",
       "email": "webmaster@viitech.net"
     }
-  ],
-  "require": {
-    "viitech/php-dev-helpers": "dev-master"
-  }
+  ]
 }
