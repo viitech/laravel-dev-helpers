@@ -1,15 +1,15 @@
 {
-  "name": "a7madev/laravel-dev-helpers",
+  "name": "viitech/laravel-dev-helpers",
   "description": "Laravel Dev Helper Functions",
   "minimum-stability": "dev",
   "license": "proprietary",
   "authors": [
     {
-      "name": "A7madev",
-      "email": "a7madev@gmail.com"
+      "name": "VII Tech Solutions",
+      "email": "webmaster@viitech.net"
     }
   ],
   "require": {
-    "a7madev/php-dev-helpers": "dev-master"
+    "viitech/php-dev-helpers": "dev-master"
   }
 }
