@@ -8,5 +8,15 @@
       "name": "VII Tech Solutions",
       "email": "webmaster@viitech.net"
     }
-  ]
+  ],
+  "require": {
+    "m4tthumphrey/php-gitlab-api": "^9.0",
+    "guzzlehttp/guzzle": "^6.3",
+    "php-http/guzzle6-adapter": "^1.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "VIITech\\Helpers\\": "src/"
+    }
+  }
 }
