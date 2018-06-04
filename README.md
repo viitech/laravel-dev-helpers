@@ -27,6 +27,8 @@
 - Return value from nullable object `\VIITech\Helpers\GlobalHelpers::returnValueFromNullableObject()`
 - Return value from nullable object `\VIITech\Helpers\GlobalHelpers::getUniqueIDsFromArray()`
 - Return Integer `\VIITech\Helpers\GlobalHelpers::returnInteger()`
+- Hash Password `\VIITech\Helpers\GlobalHelpers::hashPassword()`
+- Convert Hex to RGB `\VIITech\Helpers\GlobalHelpers::hex2rgb()`
 
 ### Gitlab Helpers
 - List All Gitlab Projects `\VIITech\Helpers\GitlabHelpers::listGitlabProjects()`
