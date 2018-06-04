@@ -43,3 +43,4 @@
 
 ### Firebase Helpers
 - Generate Dynamic Link `\VIITech\Helpers\FirebaseHelpers::generateDynamicLink()`
+- Send Firebase Cloud Message `\VIITech\Helpers\FirebaseHelpers::sendFCM()`

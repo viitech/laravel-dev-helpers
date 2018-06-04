@@ -34,4 +34,28 @@ class FirebaseHelpers
             return null;
         }
     }
+
+    /**
+     * Send Firebase Cloud Messaging
+     * @param $data_array
+     * @param bool $is_logging_enabled
+     */
+    public static function sendFCM($data_array, $is_logging_enabled = false){
+        try {
+            $guzzle_request = (new \GuzzleHttp\Client())->request('POST', 'https://fcm.googleapis.com/fcm/send', [
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                    'Authorization' => 'key=' . env('FCM_KEY')
+                ],
+                'body' => json_encode($data_array)
+            ]);
+            if($is_logging_enabled){
+                Log::info("sendFCM result: " . $guzzle_request->getBody()->getContents());
+            }
+        } catch (GuzzleException $e) {
+            if($is_logging_enabled){
+                Log::error($e);
+            }
+        }
+    }
 }
