@@ -1,7 +1,5 @@
 <?php
 
-namespace VIITech;
-
 namespace VIITech\Helpers;
 
 use DOMDocument, DOMXPath, Exception;
