@@ -10,7 +10,7 @@
     }
   ],
   "require": {
-    "m4tthumphrey/php-gitlab-api": "^9.0",
+    "m4tthumphrey/php-gitlab-api": "^9.9",
     "guzzlehttp/guzzle": "^6.3",
     "php-http/guzzle6-adapter": "^1.1"
   },

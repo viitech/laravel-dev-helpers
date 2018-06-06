@@ -14,16 +14,15 @@ class GitlabHelpers
      * List all projects from Gitlab
      * @param string $api_url API URL (example: http://git.example.com/api/v3/)
      * @param string $auth_token Authentication token
-     * @param int $number_of_items Number of items to retrieve, default is 100
      * @return array|Exception
      */
-    public static function listGitlabProjects($api_url, $auth_token, $number_of_items = 100)
+    public static function listGitlabProjects($api_url, $auth_token)
     {
         try {
             # Init Gitlab Client
             $client = self::initClient($api_url, $auth_token);
             # List all projects
-            return $client->api('projects')->all(1, $number_of_items);
+            return $client->api('projects')->all();
         } catch (Exception $e) {
             return $e;
         }
@@ -31,7 +30,7 @@ class GitlabHelpers
 
     /**
      * Initialize Gitlab Client
-     * @param string $api_url API URL (example: http://git.example.com/api/v3/)
+     * @param string $api_url API URL (example: http://git.example.com/api/v4/)
      * @param string $auth_token Authentication token
      * @return Client|null
      */

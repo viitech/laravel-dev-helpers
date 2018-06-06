@@ -2,7 +2,7 @@
 
 namespace VIITech\Helpers;
 
-use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Exception\GuzzleException, Log;
 
 class FirebaseHelpers
 {
