@@ -3,11 +3,15 @@
  
  ## Installation
  `composer require viitech/laravel-dev-helpers:master`
+ 
+ ## Middleware
+ - CORS Middleware `\VIITech\Helpers\Middleware\CorsMiddleware::class`
 
 ## Functions
 
 ### Global Helpers
 - Check App Environment `\VIITech\Helpers\GlobalHelpers::checkEnvironment()`
+- Check Is Development Environment `\VIITech\Helpers\GlobalHelpers::isDevelopmentEnv()`
 - Get Binary Path `\VIITech\Helpers\GlobalHelpers::getBinaryPath()`
 - Is Valid Object `\VIITech\Helpers\GlobalHelpers::isValidObject()`
 - Return String `\VIITech\Helpers\GlobalHelpers::returnString()`
