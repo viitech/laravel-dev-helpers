@@ -25,8 +25,9 @@ class GlobalHelpers
 
     /**
      * Is Development Environment
+     * @return bool
      */
-    function isDevelopmentEnv()
+    public static function isDevelopmentEnv()
     {
         return static::checkEnvironment(static::ENV_LOCAL) || static::checkEnvironment(static::ENV_DEVELOPMENT);
     }
