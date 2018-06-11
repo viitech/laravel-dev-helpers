@@ -7,6 +7,12 @@ use DOMDocument, DOMXPath, Exception;
 class GlobalHelpers
 {
 
+    // App Env
+    const ENV_LOCAL = "local";
+    const ENV_DEVELOPMENT = "dev";
+    const ENV_STAGING = "staging";
+    const ENV_PRODUCTION = "production";
+
     /**
      * Check Environment (local, dev, staging, production)
      * @param string $app_env
@@ -15,6 +21,14 @@ class GlobalHelpers
     public static function checkEnvironment($app_env)
     {
         return app()->environment() === $app_env;
+    }
+
+    /**
+     * Is Development Environment
+     */
+    function isDevelopmentEnv()
+    {
+        return static::checkEnvironment(static::ENV_LOCAL) || static::checkEnvironment(static::ENV_DEVELOPMENT);
     }
 
     /**
