@@ -21,6 +21,13 @@
 1. Register service provider in bootstrap.app `\VIITech\Helpers\SentryHelper::registerServiceProvider($app)`
 2. Add `SentryHelper::capture($this, $e);` to `Handler.php`
 
+### [Security Checker](https://packagist.org/packages/sensiolabs/security-checker)
+1. Run `php vendor/sensiolabs/security-checker/security-checker security:check`
+
+### [Lumen Vendor Publish](https://packagist.org/packages/laravelista/lumen-vendor-publish)
+1. Add `\Laravelista\LumenVendorPublish\VendorPublishCommand::class` to `app/Console/Kernel.php`
+2. Run `php artisan vendor:publish`
+
 ## Functions
 
 ### Global Helpers
