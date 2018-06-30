@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "27e43277d3b54bdc74013103904834e6",
+    "content-hash": "9343088561555fd6fd04dd2d5d8511ff",
     "packages": [
         {
             "name": "appzcoder/lumen-routes-list",
@@ -50,16 +50,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.62.4",
+            "version": "3.62.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "85da8eaa967902de148b465d42f4b3027395e6af"
+                "reference": "0be301c36a5c337b40e69ce3b4698cca5427e4b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/85da8eaa967902de148b465d42f4b3027395e6af",
-                "reference": "85da8eaa967902de148b465d42f4b3027395e6af",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/0be301c36a5c337b40e69ce3b4698cca5427e4b9",
+                "reference": "0be301c36a5c337b40e69ce3b4698cca5427e4b9",
                 "shasum": ""
             },
             "require": {
@@ -126,7 +126,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2018-06-27T21:26:04+00:00"
+            "time": "2018-06-29T22:12:11+00:00"
         },
         {
             "name": "clue/stream-filter",
@@ -502,12 +502,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "0773d442aa96baf19d7195f14ba6e9c2da11f8ed"
+                "reference": "7bc46be28e4b01b96d0dfda8c58169072e626558"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/0773d442aa96baf19d7195f14ba6e9c2da11f8ed",
-                "reference": "0773d442aa96baf19d7195f14ba6e9c2da11f8ed",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/7bc46be28e4b01b96d0dfda8c58169072e626558",
+                "reference": "7bc46be28e4b01b96d0dfda8c58169072e626558",
                 "shasum": ""
             },
             "require": {
@@ -559,7 +559,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2018-04-23T13:18:18+00:00"
+            "time": "2018-06-25T23:51:40+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -618,12 +618,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "7fa8852adec06dabfbde1b028c4c9d9087558256"
+                "reference": "58f6e264ef0e4107c8b3d15a9c2e653b2bce0b4d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/7fa8852adec06dabfbde1b028c4c9d9087558256",
-                "reference": "7fa8852adec06dabfbde1b028c4c9d9087558256",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/58f6e264ef0e4107c8b3d15a9c2e653b2bce0b4d",
+                "reference": "58f6e264ef0e4107c8b3d15a9c2e653b2bce0b4d",
                 "shasum": ""
             },
             "require": {
@@ -676,7 +676,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2018-05-27T22:46:05+00:00"
+            "time": "2018-06-08T08:55:26+00:00"
         },
         {
             "name": "illuminate/broadcasting",
@@ -917,12 +917,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "5d66ef389d8fb1df0fa5ebd32737e52258aefc67"
+                "reference": "5254fd29fc6058d6e4139a55a7c3b85d7c23e84d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/5d66ef389d8fb1df0fa5ebd32737e52258aefc67",
-                "reference": "5d66ef389d8fb1df0fa5ebd32737e52258aefc67",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/5254fd29fc6058d6e4139a55a7c3b85d7c23e84d",
+                "reference": "5254fd29fc6058d6e4139a55a7c3b85d7c23e84d",
                 "shasum": ""
             },
             "require": {
@@ -968,7 +968,7 @@
                 "orm",
                 "sql"
             ],
-            "time": "2018-06-22T15:18:54+00:00"
+            "time": "2018-06-28T21:23:59+00:00"
         },
         {
             "name": "illuminate/events",
@@ -1324,16 +1324,16 @@
         },
         {
             "name": "illuminate/routing",
-            "version": "v5.6.0",
+            "version": "5.6.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/routing.git",
-                "reference": "64a1463f39c2cdefab156fe6ded15321d328abaf"
+                "reference": "e2cbd091efd047a0ad52a843cf71d1f04762828c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/routing/zipball/64a1463f39c2cdefab156fe6ded15321d328abaf",
-                "reference": "64a1463f39c2cdefab156fe6ded15321d328abaf",
+                "url": "https://api.github.com/repos/illuminate/routing/zipball/e2cbd091efd047a0ad52a843cf71d1f04762828c",
+                "reference": "e2cbd091efd047a0ad52a843cf71d1f04762828c",
                 "shasum": ""
             },
             "require": {
@@ -1376,7 +1376,7 @@
             ],
             "description": "The Illuminate Routing package.",
             "homepage": "https://laravel.com",
-            "time": "2018-02-07T00:00:32+00:00"
+            "time": "2018-06-20T13:22:48+00:00"
         },
         {
             "name": "illuminate/session",
@@ -1638,16 +1638,16 @@
         },
         {
             "name": "laravelista/lumen-vendor-publish",
-            "version": "dev-master",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravelista/lumen-vendor-publish.git",
-                "reference": "7c5e2466a3ded609f4ea9f1da4e45d5963aa1682"
+                "reference": "7684f731187277ac2ca7747558ec2ce3835bfc91"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravelista/lumen-vendor-publish/zipball/7c5e2466a3ded609f4ea9f1da4e45d5963aa1682",
-                "reference": "7c5e2466a3ded609f4ea9f1da4e45d5963aa1682",
+                "url": "https://api.github.com/repos/laravelista/lumen-vendor-publish/zipball/7684f731187277ac2ca7747558ec2ce3835bfc91",
+                "reference": "7684f731187277ac2ca7747558ec2ce3835bfc91",
                 "shasum": ""
             },
             "require": {
@@ -1668,7 +1668,7 @@
             ],
             "authors": [
                 {
-                    "name": "Mario Basic",
+                    "name": "Mario Bašić",
                     "email": "mario.basic@outlook.com"
                 }
             ],
@@ -1680,7 +1680,7 @@
                 "publish",
                 "vendor"
             ],
-            "time": "2017-09-26T21:29:41+00:00"
+            "time": "2017-09-26T12:43:31+00:00"
         },
         {
             "name": "league/flysystem",
@@ -1815,16 +1815,16 @@
         },
         {
             "name": "m4tthumphrey/php-gitlab-api",
-            "version": "9.9.0",
+            "version": "9.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/m4tthumphrey/php-gitlab-api.git",
-                "reference": "d4af179edcd5b4814397123e7883bd7169a13848"
+                "reference": "c946569ae75eff6317a5691ab590b6eb071bdb26"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/m4tthumphrey/php-gitlab-api/zipball/d4af179edcd5b4814397123e7883bd7169a13848",
-                "reference": "d4af179edcd5b4814397123e7883bd7169a13848",
+                "url": "https://api.github.com/repos/m4tthumphrey/php-gitlab-api/zipball/c946569ae75eff6317a5691ab590b6eb071bdb26",
+                "reference": "c946569ae75eff6317a5691ab590b6eb071bdb26",
                 "shasum": ""
             },
             "require": {
@@ -1879,7 +1879,7 @@
                 "api",
                 "gitlab"
             ],
-            "time": "2018-04-24T07:37:31+00:00"
+            "time": "2018-06-15T13:59:39+00:00"
         },
         {
             "name": "mtdowling/jmespath.php",
@@ -4326,8 +4326,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "league/flysystem-aws-s3-v3": 20,
-        "sensiolabs/security-checker": 20,
-        "laravelista/lumen-vendor-publish": 20
+        "sensiolabs/security-checker": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
