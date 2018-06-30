@@ -7,6 +7,12 @@
 ## Middleware
  - CORS Middleware `\VIITech\Helpers\Middleware\CorsMiddleware::class`
  
+## Console
+
+### Dingo API Routes List 
+1. Add `\VIITech\Helpers\Console\DingoRoutesList::class` to `Kernal.php`
+2. Run `php artisan route:list && php artisan api:routes`
+ 
 ## Packagist
 
 ### [Lumen Routes List](https://packagist.org/packages/appzcoder/lumen-routes-list)
