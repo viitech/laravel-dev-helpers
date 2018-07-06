@@ -46,6 +46,7 @@
 - Convert String Array To Integer Array `\VIITech\Helpers\GlobalHelpers::convertStringArrayToIntegerArray()`
 - Convert Comma Separated String to Array `\VIITech\Helpers\GlobalHelpers::convertCommaSeparatedStringToArray()`
 - Get Readable Boolean `\VIITech\Helpers\GlobalHelpers::getReadableBoolean()`
+- Run Shell Command `\VIITech\Helpers\GlobalHelpers::runShellCommand()`
 - Run Command In Server `\VIITech\Helpers\GlobalHelpers::runCommandInServer()`
 - Validate Variable with Alternative `\VIITech\Helpers\GlobalHelpers::validateVarWithAlternative()`
 - Return Response (Array) `\VIITech\Helpers\GlobalHelpers::returnResponse()`

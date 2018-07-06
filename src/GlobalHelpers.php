@@ -3,6 +3,7 @@
 namespace VIITech\Helpers;
 
 use DOMDocument, DOMXPath, Exception;
+use Symfony\Component\Process\Process;
 
 class GlobalHelpers
 {
@@ -141,6 +142,25 @@ class GlobalHelpers
     public static function getReadableBoolean($bool)
     {
         return $bool == 0 ? "No" : "Yes";
+    }
+
+    /**
+     * Run Shell Command
+     * @param $command
+     * @return string
+     */
+    public static function runShellCommand($command)
+    {
+        try {
+            $process = new Process($command);
+            $process->run();
+            if (!$process->isSuccessful()) {
+                return $process->getErrorOutput();
+            }
+            return $process->getOutput();
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
     }
 
     /**
