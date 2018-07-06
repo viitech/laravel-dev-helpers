@@ -16,15 +16,15 @@
 ## Packagist
 
 ### [Lumen Routes List](https://packagist.org/packages/appzcoder/lumen-routes-list)
-1. Register service provider in bootstrap.app `\VIITech\Helpers\LumenRoutesListHelper::registerServiceProvider($app)`
+1. Register service provider in bootstrap.app `\VIITech\Helpers\Packagist\LumenRoutesListHelper::registerServiceProvider($app)`
 2. Run `composer dump-autoload && php artisan route:list`
 
 ### [Laravel Tinker](https://packagist.org/packages/laravel/tinker)
-1. Register service provider in bootstrap.app `\VIITech\Helpers\TinkerHelper::registerServiceProvider($app)`
+1. Register service provider in bootstrap.app `\VIITech\Helpers\Packagist\TinkerHelper::registerServiceProvider($app)`
 2. Run `php artisan tinker`
 
 ### [Sentry](https://packagist.org/packages/sentry/sentry-laravel)
-1. Register service provider in bootstrap.app `\VIITech\Helpers\SentryHelper::registerServiceProvider($app)`
+1. Register service provider in bootstrap.app `\VIITech\Helpers\Packagist\SentryHelper::registerServiceProvider($app)`
 2. Add `SentryHelper::capture($this, $e);` to `Handler.php`
 
 ### [Security Checker](https://packagist.org/packages/sensiolabs/security-checker)
