@@ -20,6 +20,12 @@ class GlobalHelpers
     const GIT_BRANCH_BETA = "beta";
     const GIT_BRANCH_DEV = "dev";
 
+    // HTTP Request Methods
+    const HTTP_METHOD_GET = 'GET';
+    const HTTP_METHOD_POST = 'POST';
+    const HTTP_METHOD_PUT = 'PUT';
+    const HTTP_METHOD_DELETE = 'DELETE';
+
     /**
      * Check Environment (local, dev, staging, production)
      * @param string $app_env

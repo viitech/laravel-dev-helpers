@@ -3,6 +3,7 @@
 namespace VIITech\Helpers;
 
 use Exception;
+use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7\Request;
 
 class SlackHelpers
@@ -11,15 +12,17 @@ class SlackHelpers
      * Send Slack with Details
      * @param string $slack_webhook Slack Incoming Webhook
      * @param string $message Message
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @return Exception|GuzzleException|mixed|\Psr\Http\Message\ResponseInterface
      */
     public static function sendSlackMessage($slack_webhook, $message)
     {
         try {
-            $client = new \GuzzleHttp\Client();
-            $body = "payload={\"text\": \"$message\"}";
-            $client->send(new Request('POST', $slack_webhook, [], $body));
+            $client = new \GuzzleHttp\Client(env("SSL_CACERT") ? ['verify' => env("SSL_CACERT")] : null);
+            return $client->send(new Request('POST', $slack_webhook, [], json_encode(["text" => $message])));
+        } catch (GuzzleException $e) {
+            return $e;
         } catch (Exception $e) {
+            return $e;
         }
     }
 
@@ -30,31 +33,33 @@ class SlackHelpers
      * @param string $title Title
      * @param string $message Message
      * @param string $pretext Pretext
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @return Exception|GuzzleException|mixed|\Psr\Http\Message\ResponseInterface
      */
     public static function sendSlackWithDetails($slack_webhook, $is_success, $title, $message, $pretext)
     {
         try {
             $color = $is_success ? "#3aa648" : "#ce2101";
-            $client = new \GuzzleHttp\Client();
-            $body = "{
-       \"attachments\":[
-          {
-             \"fallback\":\"$pretext\",
-             \"pretext\":\"$pretext\",
-             \"color\":\"$color\",
-             \"fields\":[
-                {
-                   \"title\":\"$title\",
-                   \"value\":\"$message\",
-                   \"short\":false
-                }
-             ]
-          }
-       ]
-    }";
-            $client->send(new Request('POST', $slack_webhook, [], $body));
+            $client = new \GuzzleHttp\Client(env("SSL_CACERT") ? ['verify' => env("SSL_CACERT")] : null);
+            return $client->send(new Request('POST', $slack_webhook, [], json_encode([
+                "attachments" => [
+                    [
+                        "fallback" => $pretext,
+                        "pretext" => $pretext,
+                        "color" => $color,
+                        "fields" => [
+                            [
+                                "title" => $title,
+                                "value" => $message,
+                                "short" => false
+                            ]
+                        ]
+                    ]
+                ]
+            ])));
+        } catch (GuzzleException $e) {
+            return $e;
         } catch (Exception $e) {
+            return $e;
         }
     }
 }
