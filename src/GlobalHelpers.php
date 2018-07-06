@@ -14,6 +14,12 @@ class GlobalHelpers
     const ENV_STAGING = "staging";
     const ENV_PRODUCTION = "production";
 
+    // Git Branches
+    const GIT_BRANCH_MASTER = "master";
+    const GIT_BRANCH_STAGING = "staging";
+    const GIT_BRANCH_BETA = "beta";
+    const GIT_BRANCH_DEV = "dev";
+
     /**
      * Check Environment (local, dev, staging, production)
      * @param string $app_env

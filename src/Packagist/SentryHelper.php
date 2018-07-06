@@ -21,7 +21,7 @@ class SentryHelper
      */
     public static function capture($handler, $e)
     {
-        if (app()->bound('sentry') && $handler->shouldReport($e) && env("SENTRY_ENABLED", false)) {
+        if (app()->bound('sentry') && $handler->shouldReport($e) && env("SENTRY_ENABLED", true)) {
             app('sentry')->captureException($e);
         }
     }
