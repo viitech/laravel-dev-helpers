@@ -147,18 +147,25 @@ class GlobalHelpers
     /**
      * Run Shell Command
      * @param $command
-     * @return string
+     * @param bool $return_status
+     * @return string|boolean
      */
-    public static function runShellCommand($command)
+    public static function runShellCommand($command, $return_status = false)
     {
         try {
             $process = new Process($command);
             $process->run();
+            if($return_status){
+                return $process->isSuccessful();
+            }
             if (!$process->isSuccessful()) {
                 return $process->getErrorOutput();
             }
             return $process->getOutput();
         } catch (Exception $e) {
+            if($return_status){
+                return false;
+            }
             return $e->getMessage();
         }
     }

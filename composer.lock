@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cad2df0a14507571ab273f567ff62945",
+    "content-hash": "2b6eb3da04058d75716d01cf2a88b3a6",
     "packages": [
         {
             "name": "appzcoder/lumen-routes-list",
@@ -4478,7 +4478,8 @@
     "stability-flags": {
         "league/flysystem-aws-s3-v3": 20,
         "sensiolabs/security-checker": 20,
-        "laravelcollective/remote": 20
+        "laravelcollective/remote": 20,
+        "symfony/process": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
