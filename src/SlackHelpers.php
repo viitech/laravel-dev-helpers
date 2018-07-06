@@ -33,9 +33,12 @@ class SlackHelpers
      * @param string $title Title
      * @param string $message Message
      * @param string $pretext Pretext
+     * @param string $username
+     * @param string $icon_url
+     * @param string $icon_emoji
      * @return Exception|GuzzleException|mixed|\Psr\Http\Message\ResponseInterface
      */
-    public static function sendSlackWithDetails($slack_webhook, $is_success, $title, $message, $pretext)
+    public static function sendSlackWithDetails($slack_webhook, $is_success, $title, $message, $pretext, $username = null, $icon_url = null, $icon_emoji = null)
     {
         try {
             $color = $is_success ? "#3aa648" : "#ce2101";
@@ -54,7 +57,10 @@ class SlackHelpers
                             ]
                         ]
                     ]
-                ]
+                ],
+                "username" => $username,
+                "icon_url" => $icon_url,
+                "icon_emoji" => $icon_emoji,
             ])));
         } catch (GuzzleException $e) {
             return $e;
