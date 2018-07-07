@@ -17,7 +17,7 @@ class SlackHelpers
     public static function sendSlackMessage($slack_webhook, $message)
     {
         try {
-            $client = new \GuzzleHttp\Client(env("SSL_CACERT") ? ['verify' => env("SSL_CACERT")] : null);
+            $client = new \GuzzleHttp\Client(env("SSL_CACERT") ? ['verify' => env("SSL_CACERT")] : []);
             return $client->send(new Request('POST', $slack_webhook, [], json_encode(["text" => $message])));
         } catch (GuzzleException $e) {
             return $e;
@@ -42,7 +42,7 @@ class SlackHelpers
     {
         try {
             $color = $is_success ? "#3aa648" : "#ce2101";
-            $client = new \GuzzleHttp\Client(env("SSL_CACERT") ? ['verify' => env("SSL_CACERT")] : null);
+            $client = new \GuzzleHttp\Client(env("SSL_CACERT") ? ['verify' => env("SSL_CACERT")] : []);
             return $client->send(new Request('POST', $slack_webhook, [], json_encode([
                 "attachments" => [
                     [
