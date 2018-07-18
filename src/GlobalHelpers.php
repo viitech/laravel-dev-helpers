@@ -12,6 +12,7 @@ class GlobalHelpers
     const ENV_LOCAL = "local";
     const ENV_DEVELOPMENT = "dev";
     const ENV_STAGING = "staging";
+    const ENV_BETA = "beta";
     const ENV_PRODUCTION = "production";
 
     // Git Branches
@@ -432,6 +433,29 @@ class GlobalHelpers
         }
         $rgb = array($r, $g, $b);
         return $rgb; // returns an array with the rgb values
+    }
+
+    /**
+     * Set Laravel Environment Value
+     * @param string $envKey
+     * @param string $envValue
+     * @return bool|Exception
+     */
+    public static function setLaravelEnvironmentValue($envKey, $envValue)
+    {
+        try {
+            $envFile = base_path('.env');
+            $str = file_get_contents($envFile);
+            $oldValue = env($envKey);
+            if($oldValue == 0 || $oldValue == 1) $oldValue = ($oldValue) ? "true" : "false";
+            $str = str_replace("{$envKey}={$oldValue}", "{$envKey}={$envValue}", $str);
+            $fp = fopen($envFile, 'w');
+            fwrite($fp, $str);
+            fclose($fp);
+            return true;
+        } catch (Exception $e) {
+            return $e;
+        }
     }
 }
 

@@ -61,6 +61,7 @@
 - Return Integer `\VIITech\Helpers\GlobalHelpers::returnInteger()`
 - Hash Password `\VIITech\Helpers\GlobalHelpers::hashPassword()`
 - Convert Hex to RGB `\VIITech\Helpers\GlobalHelpers::hex2rgb()`
+- set Laravel Environment Value `\VIITech\Helpers\GlobalHelpers::setLaravelEnvironmentValue()`
 
 ### Gitlab Helpers
 - List All Gitlab Projects `\VIITech\Helpers\GitlabHelpers::listGitlabProjects()`
