@@ -12,7 +12,7 @@ class GoogleHelpers
      * Validate Google reCaptcha
      * @param string $google_recaptcha_secret
      * @param string $g_recaptcha_reponse
-     * @return boolean|Exception
+     * @return boolean
      */
     public static function validateRecaptcha($google_recaptcha_secret, $g_recaptcha_reponse)
     {
@@ -29,7 +29,7 @@ class GoogleHelpers
             $body = json_decode((string) $response->getBody());
             return $body->success;
         } catch (Exception $e) {
-            return $e;
+            return false;
         }
     }
 }
