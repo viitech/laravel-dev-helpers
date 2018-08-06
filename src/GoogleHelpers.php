@@ -9,7 +9,7 @@ class GoogleHelpers
 {
 
     /**
-     * Validate Google Recaptcha
+     * Validate Google reCaptcha
      * @param string $google_recaptcha_secret
      * @param string $g_recaptcha_reponse
      * @return boolean|Exception

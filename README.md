@@ -64,7 +64,7 @@
 - set Laravel Environment Value `\VIITech\Helpers\GlobalHelpers::setLaravelEnvironmentValue()`
 
 ### Google Helpers
-- List All Gitlab Projects `\VIITech\Helpers\GoogleHelpers::validateRecaptcha()`
+- Validate Google reCaptcha `\VIITech\Helpers\GoogleHelpers::validateRecaptcha()`
 
 ### Gitlab Helpers
 - List All Gitlab Projects `\VIITech\Helpers\GitlabHelpers::listGitlabProjects()`
