@@ -63,6 +63,9 @@
 - Convert Hex to RGB `\VIITech\Helpers\GlobalHelpers::hex2rgb()`
 - set Laravel Environment Value `\VIITech\Helpers\GlobalHelpers::setLaravelEnvironmentValue()`
 
+### Google Helpers
+- List All Gitlab Projects `\VIITech\Helpers\GoogleHelpers::validateRecaptcha()`
+
 ### Gitlab Helpers
 - List All Gitlab Projects `\VIITech\Helpers\GitlabHelpers::listGitlabProjects()`
 - List Gitlab Issues `\VIITech\Helpers\GitlabHelpers::listGitlabIssues()`
