@@ -25,7 +25,11 @@
     "laravelista/lumen-vendor-publish": "^2.1",
     "illuminate/routing": "^5.6",
     "laravelcollective/remote": "^5.6@dev",
-    "symfony/process": "^4.2@dev"
+    "symfony/process": "^4.2@dev",
+    "illuminate/mail": "^5.6",
+    "illuminate/hashing": "^5.6",
+    "illuminate/http": "^5.6",
+    "doctrine/dbal": "^2.8"
   },
   "autoload": {
     "psr-4": {

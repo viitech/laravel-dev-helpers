@@ -58,9 +58,9 @@ class GlobalHelpers
             if ($result != null) {
                 return $result;
             }
-            return env($binary_name, "");
+            return env($binary_name,  "/usr/local/bin/" . $binary_name);
         } catch (Exception $e) {
-            return env($binary_name, "");
+            return env($binary_name, "/usr/local/bin/" . $binary_name);
         }
     }
 
