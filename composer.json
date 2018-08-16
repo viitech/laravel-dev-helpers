@@ -38,7 +38,7 @@
     "aws/aws-sdk-php-laravel": "dev-master"
   },
   "require-dev": {
-    "tymon/jwt-auth": "^0.5@dev",
+    "tymon/jwt-auth": "1.0.*@dev",
     "dingo/api": "^2.0@dev"
   },
   "autoload": {
