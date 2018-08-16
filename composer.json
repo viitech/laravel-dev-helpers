@@ -36,7 +36,7 @@
     "illuminate/validation": "^5.6",
     "google/apiclient": "^2.0@dev",
     "aws/aws-sdk-php-laravel": "dev-master",
-    "tymon/jwt-auth": "dev-master",
+    "tymon/jwt-auth": "^0.5@dev",
     "dingo/api": "^2.0@dev"
   },
   "autoload": {

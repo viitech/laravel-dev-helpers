@@ -42,9 +42,13 @@ class GoogleHelpers
      */
     public static function validateGoogleToken($google_client_id, $token)
     {
-        /** @var Google_Client $client */
-        $client = new Google_Client(['client_id' => $google_client_id]);
-        $payload = $client->verifyIdToken($token);
-        return $payload ? true : false;
+        try {
+            /** @var Google_Client $client */
+            $client = new Google_Client(['client_id' => $google_client_id]);
+            $payload = $client->verifyIdToken($token);
+            return $payload ? true : false;
+        } catch (Exception $e) {
+            return false;
+        }
     }
 }
