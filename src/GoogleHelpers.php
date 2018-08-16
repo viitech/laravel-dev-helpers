@@ -3,6 +3,7 @@
 namespace VIITech\Helpers;
 
 use Exception;
+use Google_Client;
 use GuzzleHttp\Client;
 
 class GoogleHelpers
@@ -31,5 +32,19 @@ class GoogleHelpers
         } catch (Exception $e) {
             return false;
         }
+    }
+
+    /**
+     * Validate Google Token
+     * @param string $google_client_id
+     * @param string $token
+     * @return boolean
+     */
+    public static function validateGoogleToken($google_client_id, $token)
+    {
+        /** @var Google_Client $client */
+        $client = new Google_Client(['client_id' => $google_client_id]);
+        $payload = $client->verifyIdToken($token);
+        return $payload ? true : false;
     }
 }

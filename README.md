@@ -34,6 +34,16 @@
 1. Add `\Laravelista\LumenVendorPublish\VendorPublishCommand::class` to `app/Console/Kernel.php`
 2. Run `php artisan vendor:publish`
 
+## Dingo API and JWT
+
+### Enable custom array serializer
+1. Add `CustomDingoSerializerProvider::class` to Service Provider in `bootstrap/app.php`
+2. Add `API_CUSTOM_SERIALIZER=true` to `.env`
+
+### Enable JWT
+1. Add `CustomDingoSerializerProvider::class` to Service Provider in `bootstrap/app.php`
+2. Add `API_ENABLE_JWT=true` to `.env`
+
 ## Functions
 
 ### Global Helpers
@@ -65,6 +75,7 @@
 
 ### Google Helpers
 - Validate Google reCaptcha `\VIITech\Helpers\GoogleHelpers::validateRecaptcha()`
+- Validate Google Token `\VIITech\Helpers\GoogleHelpers::validateGoogleToken()`
 
 ### Gitlab Helpers
 - List All Gitlab Projects `\VIITech\Helpers\GitlabHelpers::listGitlabProjects()`
