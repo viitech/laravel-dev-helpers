@@ -6,6 +6,7 @@
  
 ## Middleware
  - CORS Middleware `\VIITech\Helpers\Middleware\CorsMiddleware::class`
+ - Force HTTPS Middleware `\VIITech\Helpers\Middleware\ForceHttpsMiddleware::class`
  
 ## Console
 

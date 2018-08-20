@@ -2,6 +2,7 @@
   "name": "viitech/laravel-dev-helpers",
   "description": "Laravel Dev Helper Functions",
   "minimum-stability": "dev",
+  "prefer-stable": true,
   "license": "MIT",
   "authors": [
     {
@@ -39,7 +40,9 @@
   },
   "require-dev": {
     "tymon/jwt-auth": "1.0.*@dev",
-    "dingo/api": "^2.0@dev"
+    "dingo/api": "^2.0@dev",
+    "nesbot/carbon": "^1.33",
+    "laravel/lumen-framework": "^5.6"
   },
   "autoload": {
     "psr-4": {
