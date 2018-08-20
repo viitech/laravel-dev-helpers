@@ -4,7 +4,7 @@ namespace VIITech\Helpers\Packagist\DingoAPI;
 
 use League\Fractal\TransformerAbstract;
 
-abstract class CustomInfoTransformer extends TransformerAbstract
+class CustomInfoTransformer extends TransformerAbstract
 {
     /**
      * Turn this item object into a generic array
