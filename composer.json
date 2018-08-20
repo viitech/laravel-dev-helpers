@@ -36,13 +36,13 @@
     "illuminate/cache": "^5.6",
     "illuminate/validation": "^5.6",
     "google/apiclient": "^2.0@dev",
-    "aws/aws-sdk-php-laravel": "dev-master"
+    "aws/aws-sdk-php-laravel": "^3.1",
+    "nesbot/carbon": "^1.33"
   },
   "require-dev": {
+    "laravel/lumen-framework": "^5.6",
     "tymon/jwt-auth": "1.0.*@dev",
-    "dingo/api": "^2.0@dev",
-    "nesbot/carbon": "^1.33",
-    "laravel/lumen-framework": "^5.6"
+    "dingo/api": "^2.0@dev"
   },
   "autoload": {
     "psr-4": {
