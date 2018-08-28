@@ -3,6 +3,7 @@
 namespace VIITech\Helpers;
 
 use DOMDocument, DOMXPath, Exception;
+use Illuminate\Http\JsonResponse;
 use Symfony\Component\Process\Process;
 
 class GlobalHelpers
@@ -26,6 +27,13 @@ class GlobalHelpers
     const HTTP_METHOD_POST = 'POST';
     const HTTP_METHOD_PUT = 'PUT';
     const HTTP_METHOD_DELETE = 'DELETE';
+
+    // HTTP STATUS
+    const HTTP_STATUS_200_OK = 200;
+    const HTTP_STATUS_400_BAD_REQUEST = 400;
+    const HTTP_STATUS_401_UNAUTHORIZED = 401;
+    const HTTP_STATUS_500_INTERNAL_SERVER_ERROR = 500;
+    const HTTP_STATUS_503_SERVICE_UNAVAILABLE = 503;
 
     /**
      * Check Environment (local, dev, staging, production)
@@ -132,6 +140,16 @@ class GlobalHelpers
             return null;
         }
         return $array;
+    }
+
+    /**
+     * Is Valid String
+     * @param $var
+     * @return bool
+     */
+    function isValidString($var)
+    {
+        return !is_null($var) && !empty($var) && is_string($var);
     }
 
     /**
