@@ -10,7 +10,7 @@ class CustomDingoAPIHelper
      * Custom Exception Handler
      * @param $exception_handler
      */
-    public function exceptionHandler($exception_handler)
+    public static function exceptionHandler($exception_handler)
     {
         app(\Dingo\Api\Exception\Handler::class)->register(function (\Exception $exception) use ($exception_handler) {
             if($exception instanceof \MongoDB\Driver\Exception\AuthenticationException || $exception instanceof \MongoDB\Driver\Exception\ConnectionException){
