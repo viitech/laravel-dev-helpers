@@ -10,6 +10,9 @@
  
 ## Console
 
+### Dingo API Custom Exception Handler
+1. Add `CustomDingoAPIHelper::exceptionHandler(App\Exceptions\Handler::class);` to `bootstrap/app.php`
+
 ### Dingo API Routes List 
 1. Add `\VIITech\Helpers\Console\DingoRoutesList::class` to `Kernal.php`
 2. Run `php artisan route:list && php artisan api:routes`

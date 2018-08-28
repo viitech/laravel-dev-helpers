@@ -143,16 +143,6 @@ class GlobalHelpers
     }
 
     /**
-     * Is Valid String
-     * @param $var
-     * @return bool
-     */
-    function isValidString($var)
-    {
-        return !is_null($var) && !empty($var) && is_string($var);
-    }
-
-    /**
      * Convert Comma Separated String to Array
      * @param string $data
      * @return array|string
