@@ -62,7 +62,7 @@ class GlobalHelpers
     public static function getBinaryPath($binary_name)
     {
         try {
-            $result = shell_exec('which ' . $binary_name);
+            $result = trim(shell_exec('which ' . $binary_name));
             if ($result != null) {
                 return $result;
             }
