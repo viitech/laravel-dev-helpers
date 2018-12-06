@@ -82,7 +82,7 @@ class GlobalHelpers
     {
         if (!is_null($var)) { // variable is not null
             if (!is_null($type)) { // check instance type
-                return $var instanceof $type; // is variable instance of type
+                return $var instanceof $type || is_a($var, $type); // is variable instance of type
             } else { // variable is not null, don't check type
                 return true;
             }
