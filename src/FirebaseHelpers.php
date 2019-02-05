@@ -2,7 +2,8 @@
 
 namespace VIITech\Helpers;
 
-use GuzzleHttp\Exception\GuzzleException, Log;
+use Exception;
+use GuzzleHttp\Exception\GuzzleException, Illuminate\Support\Facades\Log;
 
 class FirebaseHelpers
 {
@@ -25,12 +26,13 @@ class FirebaseHelpers
                 ]
             ]);
             if($guzzle_request->getStatusCode() == 200){
-                $result = json_decode($guzzle_request->getBody()->getContents());
-                return $result->shortLink;
+                return json_decode($guzzle_request->getBody()->getContents())->shortLink;
             }else{
                 return null;
             }
         } catch (GuzzleException $e) {
+            return null;
+        }catch (Exception $e) {
             return null;
         }
     }
@@ -53,6 +55,10 @@ class FirebaseHelpers
                 Log::info("sendFCM result: " . $guzzle_request->getBody()->getContents());
             }
         } catch (GuzzleException $e) {
+            if($is_logging_enabled){
+                Log::error($e);
+            }
+        }catch (Exception $e) {
             if($is_logging_enabled){
                 Log::error($e);
             }

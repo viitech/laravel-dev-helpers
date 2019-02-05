@@ -37,7 +37,7 @@ class ApplicationHelper
 
         // Create Singleton
         $app->singleton('mailer', function ($app) {
-            /** @var Laravel\Lumen\Application $app */
+            /** @var \Laravel\Lumen\Application $app */
             $app->configure('services');
             return $app->loadComponent('mail', 'Illuminate\Mail\MailServiceProvider', 'mailer');
         });

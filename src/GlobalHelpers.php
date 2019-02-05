@@ -465,5 +465,16 @@ class GlobalHelpers
             return $e;
         }
     }
+
+
+    /**
+     * Return Boolean As String
+     * @param $val
+     * @return string
+     */
+    function returnBooleanString($val)
+    {
+        return $val ? 'true' : 'false';
+    }
 }
 

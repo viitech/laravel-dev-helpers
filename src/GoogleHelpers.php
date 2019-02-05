@@ -12,10 +12,10 @@ class GoogleHelpers
     /**
      * Validate Google reCaptcha
      * @param string $google_recaptcha_secret
-     * @param string $g_recaptcha_reponse
+     * @param string $g_recaptcha_response
      * @return boolean
      */
-    public static function validateRecaptcha($google_recaptcha_secret, $g_recaptcha_reponse)
+    public static function validateRecaptcha($google_recaptcha_secret, $g_recaptcha_response)
     {
         try {
             $client = new Client();
@@ -23,12 +23,11 @@ class GoogleHelpers
                 'https://www.google.com/recaptcha/api/siteverify', ['form_params'=>
                     [
                         'secret' => $google_recaptcha_secret,
-                        'response' => $g_recaptcha_reponse
+                        'response' => $g_recaptcha_response
                     ]
                 ]
             );
-            $body = json_decode((string) $response->getBody());
-            return $body->success;
+            return json_decode((string) $response->getBody())->success;
         } catch (Exception $e) {
             return false;
         }
