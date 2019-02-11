@@ -58,12 +58,15 @@
 - Return String `\VIITech\Helpers\GlobalHelpers::returnString()`
 - Return Boolean `\VIITech\Helpers\GlobalHelpers::returnBoolean()`
 - Convert String Array To Integer Array `\VIITech\Helpers\GlobalHelpers::convertStringArrayToIntegerArray()`
+- Get Value From HTTP Request `\VIITech\Helpers\GlobalHelpers::getValueFromHTTPRequest()`
 - Convert Comma Separated String to Array `\VIITech\Helpers\GlobalHelpers::convertCommaSeparatedStringToArray()`
 - Get Readable Boolean `\VIITech\Helpers\GlobalHelpers::getReadableBoolean()`
 - Run Shell Command `\VIITech\Helpers\GlobalHelpers::runShellCommand()`
 - Run Command In Server `\VIITech\Helpers\GlobalHelpers::runCommandInServer()`
 - Validate Variable with Alternative `\VIITech\Helpers\GlobalHelpers::validateVarWithAlternative()`
 - Return Response (Array) `\VIITech\Helpers\GlobalHelpers::returnResponse()`
+- Return JSON Response `\VIITech\Helpers\GlobalHelpers::returnJSONResponse()`
+- Get Formatted Carbon Date From UTC Date Time `\VIITech\Helpers\GlobalHelpers::getFormattedCarbonDateFromUTCDateTime()`
 - Generate Random Number `\VIITech\Helpers\GlobalHelpers::generateRandomNumber()`
 - Get Page Title From URL `\VIITech\Helpers\GlobalHelpers::getPageTitle()`
 - Is String English? `\VIITech\Helpers\GlobalHelpers::isEnglish()`

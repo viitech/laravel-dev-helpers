@@ -29,7 +29,8 @@
     "google/apiclient": "^2.0@dev",
     "aws/aws-sdk-php-laravel": "^3.1",
     "nesbot/carbon": "^1.33",
-    "darkaonline/l5-swagger": "^5.7"
+    "darkaonline/l5-swagger": "^5.7",
+    "bensampo/laravel-enum": "^1.16"
   },
   "require-dev": {
     "laravel/lumen-framework": "^5.6",

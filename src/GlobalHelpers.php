@@ -2,8 +2,16 @@
 
 namespace VIITech\Helpers;
 
+use App\Constants\Attributes;
+use App\Constants\CastingTypes;
+use App\Constants\DebuggerLevels;
+use Carbon\Carbon;
+use Dingo\Api\Contract\Http\Request;
 use DOMDocument, DOMXPath, Exception;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Log;
+use MongoDB\BSON\UTCDateTime;
 use Symfony\Component\Process\Process;
 
 class GlobalHelpers
@@ -143,6 +151,59 @@ class GlobalHelpers
     }
 
     /**
+     * Get Value From HTTP Request
+     * @param \Illuminate\Http\Request|Request|\Illuminate\Support\Collection|array $request
+     * @param string $key
+     * @param mixed $default
+     * @param mixed $type
+     * @return mixed
+     */
+    function getValueFromHTTPRequest($request, $key, $default = null, $type = null)
+    {
+
+        $return_value = null;
+
+        if (is_array($request)) {
+            $request = collect($request);
+        }
+
+        // get value
+        if (!is_null($request) && $request->has($key)) {
+            $return_value = $request->get($key);
+            if (is_null($return_value) && isset($request->all()[$key])) {
+                $return_value = $request->all()[$key];
+            }
+        } else if (is_array($request) && array_key_exists($key, $request)) {
+            $return_value = $request[$key];
+        } else {
+            $return_value = $default;
+        }
+
+        if ($return_value === Attributes::FALSE) {
+            $return_value = false;
+        } else if ($return_value === Attributes::TRUE) {
+            $return_value = true;
+        }
+
+        // validate and cast object
+        try {
+            if ($type == CastingTypes::ARRAY) { // array
+                return (array) $return_value;
+            } elseif ($type == CastingTypes::STRING) { // string
+                return (string) $return_value;
+            } else if ($type == CastingTypes::BOOLEAN) { // boolean
+                return (boolean) $return_value;
+            } else if ($type == CastingTypes::INTEGER) { // integer
+                return (int) $return_value;
+            } else {
+                return $return_value;
+            }
+        } catch (Exception $e) {
+            return $return_value;
+        }
+    }
+
+    /**
      * Convert Comma Separated String to Array
      * @param string $data
      * @return array|string
@@ -267,6 +328,42 @@ class GlobalHelpers
     }
 
     /**
+     * Return JSON Response
+     * @param array $array
+     * @param int $status
+     * @return \Dingo\Api\Http\Response
+     */
+    static function returnJSONResponse($array, $status = Response::HTTP_OK)
+    {
+        return response()->json($array, $status);
+    }
+
+    /**
+     * Get Formatted Carbon Date From UTC DateTime
+     * @param UTCDateTime $value
+     * @return mixed
+     */
+    static function getFormattedCarbonDateFromUTCDateTime($value)
+    {
+        try {
+            if(!is_null($value)){
+                if (is_array($value) && isset($value["date"])) {
+                    $value = $value["date"];
+                }
+
+                if (is_a($value, Carbon::class)) {
+                    return $value->format('c');
+                }
+
+                return Carbon::instance($value->toDateTime())->format('c');
+            }
+            return $value;
+        } catch (Exception $e) {
+            return $value;
+        }
+    }
+
+    /**
      * Generate a random number
      * @param int $range_from Range From
      * @param int $range_to Range To
@@ -370,8 +467,35 @@ class GlobalHelpers
      */
     public static function isValidVariable($variable)
     {
-        if(is_string($variable)) $variable = trim($variable);
-        return isset($variable) && !is_null($variable) && !empty($variable);
+        if(is_string($variable)) {
+            $variable = trim($variable);
+            return isset($variable) && !is_null($variable) && !empty($variable);
+        }
+        return isset($variable) && !is_null($variable);
+    }
+
+    /**
+     * Debugger
+     * @param \Exception|string $e
+     * @param string $level
+     */
+    static function debugger($e, $level)
+    {
+        try {
+            $debugger_logs_enabled = env('DEBUGGER_LOGS_ENABLED', false);
+            if ($debugger_logs_enabled) {
+                if ($level == DebuggerLevels::ERROR) {
+                    Log::error($e);
+                } else if ($level == DebuggerLevels::WARNING) {
+                    Log::warning($e);
+                } else if ($level == DebuggerLevels::INFO) {
+                    Log::info($e);
+                } else if ($level == DebuggerLevels::ALERT) {
+                    Log::alert($e);
+                }
+            }
+        } catch (Exception $e) {
+        }
     }
 
     /**
