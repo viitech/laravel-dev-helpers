@@ -2,6 +2,7 @@
 
 namespace VIITech\Helpers\Packagist\DingoAPI;
 
+use Illuminate\Http\Response;
 use VIITech\Helpers\GlobalHelpers;
 
 class CustomDingoAPIHelper
@@ -17,7 +18,7 @@ class CustomDingoAPIHelper
                 if (class_exists(\MongoDB\Driver\Exception\Exception::class) &&
                     ($exception instanceof \MongoDB\Driver\Exception\AuthenticationException || $exception instanceof \MongoDB\Driver\Exception\ConnectionException ||
                         $exception instanceof \MongoDB\Driver\Exception\ConnectionTimeoutException || $exception instanceof \MongoDB\Driver\Exception\ExecutionTimeoutException)) {
-                    return GlobalHelpers::returnResponse(false, "Unavailable Service!", [], [], GlobalHelpers::HTTP_STATUS_503_SERVICE_UNAVAILABLE);
+                    return GlobalHelpers::returnResponse(false, "Unavailable Service!", [], [], Response::HTTP_SERVICE_UNAVAILABLE);
                 }
                 return app($exception_handler)->report($exception);
             });

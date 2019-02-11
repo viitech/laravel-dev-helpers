@@ -3,21 +3,24 @@
 namespace VIITech\Helpers\Middleware;
 
 use Closure;
+use VIITech\Helpers\Constants\DebuggerLevels;
+use VIITech\Helpers\Constants\EnvVariables;
+use VIITech\Helpers\GlobalHelpers;
 
 class ForceHttpsMiddleware
 {
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Closure $next
      * @return mixed
      */
     public function handle($request, Closure $next)
     {
         // only attempt to force HTTPS if the package has been configured to do so
         try {
-            if (env("FORCE_HTTPS", false)) {
+            if (env(EnvVariables::FORCE_HTTPS, false)) {
                 // check how the absolute URL in the request looks
                 $url = strtolower(url($request->server("REQUEST_URI")));
                 $https = $request->server("HTTPS");
@@ -29,7 +32,9 @@ class ForceHttpsMiddleware
                     }
                 }
             }
-        } catch (\Exception $e) {}
+        } catch (\Exception $e) {
+            GlobalHelpers::debugger($e, DebuggerLevels::ERROR);
+        }
 
         return $next($request);
     }

@@ -13,16 +13,11 @@ use Symfony\Component\Process\Process;
 use VIITech\Helpers\Constants\Attributes;
 use VIITech\Helpers\Constants\CastingTypes;
 use VIITech\Helpers\Constants\DebuggerLevels;
+use VIITech\Helpers\Constants\Environments;
+use VIITech\Helpers\Constants\EnvVariables;
 
 class GlobalHelpers
 {
-
-    // App Env
-    const ENV_LOCAL = "local";
-    const ENV_DEVELOPMENT = "dev";
-    const ENV_STAGING = "staging";
-    const ENV_BETA = "beta";
-    const ENV_PRODUCTION = "production";
 
     // Git Branches
     const GIT_BRANCH_MASTER = "master";
@@ -35,13 +30,6 @@ class GlobalHelpers
     const HTTP_METHOD_POST = 'POST';
     const HTTP_METHOD_PUT = 'PUT';
     const HTTP_METHOD_DELETE = 'DELETE';
-
-    // HTTP STATUS
-    const HTTP_STATUS_200_OK = 200;
-    const HTTP_STATUS_400_BAD_REQUEST = 400;
-    const HTTP_STATUS_401_UNAUTHORIZED = 401;
-    const HTTP_STATUS_500_INTERNAL_SERVER_ERROR = 500;
-    const HTTP_STATUS_503_SERVICE_UNAVAILABLE = 503;
 
     /**
      * Check Environment (local, dev, staging, production)
@@ -59,7 +47,7 @@ class GlobalHelpers
      */
     public static function isDevelopmentEnv()
     {
-        return static::checkEnvironment(static::ENV_LOCAL) || static::checkEnvironment(static::ENV_DEVELOPMENT);
+        return static::checkEnvironment(Environments::LOCAL) || static::checkEnvironment(Environments::DEVELOPMENT);
     }
 
     /**
@@ -125,9 +113,9 @@ class GlobalHelpers
     {
         if (is_null($val)) return false; // return false if its null
         if (is_integer($val)) return $val === 1; // convert integer to boolean
-        if ($val === "true") {
+        if ($val === Attributes::TRUE) {
             $val = true;
-        } else if ($val === "false") {
+        } else if ($val === Attributes::FALSE) {
             $val = false;
         }
         return (boolean) $val;
@@ -319,11 +307,11 @@ class GlobalHelpers
         }
 
         return response()->json([
-            'status' => $status,
-            'success' => $success,
-            'message' => $message,
-            'data' => $data,
-            'error' => $error,
+            Attributes::STATUS => $status,
+            Attributes::SUCCESS => $success,
+            Attributes::MESSAGE => $message,
+            Attributes::DATA => $data,
+            Attributes::ERROR => $error,
         ], $status);
     }
 
@@ -336,31 +324,6 @@ class GlobalHelpers
     static function returnJSONResponse($array, $status = Response::HTTP_OK)
     {
         return response()->json($array, $status);
-    }
-
-    /**
-     * Get Formatted Carbon Date From UTC DateTime
-     * @param UTCDateTime $value
-     * @return mixed
-     */
-    static function getFormattedCarbonDateFromUTCDateTime($value)
-    {
-        try {
-            if(!is_null($value)){
-                if (is_array($value) && isset($value["date"])) {
-                    $value = $value["date"];
-                }
-
-                if (is_a($value, Carbon::class)) {
-                    return $value->format('c');
-                }
-
-                return Carbon::instance($value->toDateTime())->format('c');
-            }
-            return $value;
-        } catch (Exception $e) {
-            return $value;
-        }
     }
 
     /**
@@ -416,7 +379,7 @@ class GlobalHelpers
                 $headers = get_headers($url);
                 $code = substr($headers[0], 9, 3);
             } catch (Exception $e) {}
-            if ($code == "200" || $code == "302" || $code == "301") { // exists
+            if ($code == Response::HTTP_OK || $code == Response::HTTP_MOVED_PERMANENTLY || $code == Response::HTTP_FOUND) { // exists
                 return true;
             } else {
                 return false;
@@ -482,7 +445,7 @@ class GlobalHelpers
     static function debugger($e, $level)
     {
         try {
-            $debugger_logs_enabled = env('DEBUGGER_LOGS_ENABLED', false);
+            $debugger_logs_enabled = env(EnvVariables::DEBUGGER_LOGS_ENABLED, false);
             if ($debugger_logs_enabled) {
                 if ($level == DebuggerLevels::ERROR) {
                     Log::error($e);
@@ -494,8 +457,7 @@ class GlobalHelpers
                     Log::alert($e);
                 }
             }
-        } catch (Exception $e) {
-        }
+        } catch (Exception $e) {}
     }
 
     /**
@@ -579,7 +541,7 @@ class GlobalHelpers
             $envFile = base_path('.env');
             $str = file_get_contents($envFile);
             $oldValue = env($envKey);
-            if($oldValue == 0 || $oldValue == 1) $oldValue = ($oldValue) ? "true" : "false";
+            if($oldValue == 0 || $oldValue == 1) $oldValue = ($oldValue) ? Attributes::TRUE : Attributes::FALSE;
             $str = str_replace("{$envKey}={$oldValue}", "{$envKey}={$envValue}", $str);
             $fp = fopen($envFile, 'w');
             fwrite($fp, $str);
@@ -598,7 +560,7 @@ class GlobalHelpers
      */
     function returnBooleanString($val)
     {
-        return $val ? 'true' : 'false';
+        return $val ? Attributes::TRUE : Attributes::FALSE;
     }
 }
 

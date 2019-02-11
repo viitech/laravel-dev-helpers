@@ -5,30 +5,31 @@ namespace VIITech\Helpers;
 use Exception;
 use Google_Client;
 use GuzzleHttp\Exception\GuzzleException;
-use Illuminate\Support\Facades\Log;
+use VIITech\Helpers\Constants\DebuggerLevels;
+use VIITech\Helpers\Constants\EnvVariables;
 
 class MailchimpHelpers
 {
 
     /**
      * Subscribe Email
-     * @param $email
+     * @param string $url
+     * @param string $email
      * @return Exception|mixed|\Psr\Http\Message\ResponseInterface|GuzzleException
      */
     public function subscribeEmail($url, $email)
     {
-        $url = 'http://myspringring.us16.list-manage.com/subscribe/post?u=085552a2ec875bed2deb17302&id=4b8d90b2a1';
         try {
-            $client = new \GuzzleHttp\Client(env("SSL_CACERT") ? ['verify' => env("SSL_CACERT")] : []);
+            $client = new \GuzzleHttp\Client(env(EnvVariables::SSL_CACERT) ? ['verify' => env(EnvVariables::SSL_CACERT)] : []);
             $result = $client->send(new \GuzzleHttp\Psr7\Request('POST', $url, [], json_encode([
                 "email" => $email
             ])));
             return $result;
         } catch (GuzzleException $e) {
-            Log::error($e);
+            GlobalHelpers::debugger($e, DebuggerLevels::ERROR);
             return $e;
         } catch (Exception $e) {
-            Log::error($e);
+            GlobalHelpers::debugger($e, DebuggerLevels::ERROR);
             return $e;
         }
     }

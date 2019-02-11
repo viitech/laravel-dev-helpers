@@ -3,7 +3,9 @@
 namespace VIITech\Helpers;
 
 use Exception;
-use GuzzleHttp\Exception\GuzzleException, Illuminate\Support\Facades\Log;
+use GuzzleHttp\Exception\GuzzleException;
+use VIITech\Helpers\Constants\DebuggerLevels;
+use VIITech\Helpers\Constants\EnvVariables;
 
 class FirebaseHelpers
 {
@@ -39,7 +41,7 @@ class FirebaseHelpers
 
     /**
      * Send Firebase Cloud Messaging
-     * @param $data_array
+     * @param array $data_array
      * @param bool $is_logging_enabled
      */
     public static function sendFCM($data_array, $is_logging_enabled = false){
@@ -47,20 +49,20 @@ class FirebaseHelpers
             $guzzle_request = (new \GuzzleHttp\Client())->request('POST', 'https://fcm.googleapis.com/fcm/send', [
                 'headers' => [
                     'Content-Type' => 'application/json',
-                    'Authorization' => 'key=' . env('FCM_KEY')
+                    'Authorization' => 'key=' . env(EnvVariables::FCM_KEY)
                 ],
                 'body' => json_encode($data_array)
             ]);
             if($is_logging_enabled){
-                Log::info("sendFCM result: " . $guzzle_request->getBody()->getContents());
+                GlobalHelpers::debugger("sendFCM result: " . $guzzle_request->getBody()->getContents(), DebuggerLevels::INFO);
             }
         } catch (GuzzleException $e) {
             if($is_logging_enabled){
-                Log::error($e);
+                GlobalHelpers::debugger($e, DebuggerLevels::ERROR);
             }
         }catch (Exception $e) {
             if($is_logging_enabled){
-                Log::error($e);
+                GlobalHelpers::debugger($e, DebuggerLevels::ERROR);
             }
         }
     }

@@ -3,6 +3,7 @@
 namespace VIITech\Helpers\Packagist\DingoAPI;
 
 use Illuminate\Support\ServiceProvider;
+use VIITech\Helpers\Constants\EnvVariables;
 
 class CustomDingoSerializerProvider extends ServiceProvider
 {
@@ -14,7 +15,7 @@ class CustomDingoSerializerProvider extends ServiceProvider
     public function boot(){
 
         // Enable Custom Serializer
-        if(env("API_CUSTOM_SERIALIZER", false)) {
+        if(env(EnvVariables::API_CUSTOM_SERIALIZER, false)) {
             $this->app[\Dingo\Api\Transformer\Factory::class]->setAdapter(function ($app) {
                 $fractal = new \League\Fractal\Manager;
                 $fractal->setSerializer(new CustomDingoDataArraySerializer);
@@ -23,7 +24,7 @@ class CustomDingoSerializerProvider extends ServiceProvider
         }
 
         // Enable JWT with Dingo API
-        if(env("ENABLE_JWT", false)) {
+        if(env(EnvVariables::ENABLE_JWT, false)) {
             /** @var \Dingo\Api\Auth\Auth $dingo_auth */
             $this->app[\Dingo\Api\Auth\Auth::class]->extend('jwt', function ($app) {
                 return new \Dingo\Api\Auth\Provider\JWT($app[\Tymon\JWTAuth\JWTAuth::class]);

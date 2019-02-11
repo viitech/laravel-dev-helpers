@@ -5,6 +5,7 @@ namespace VIITech\Helpers\Packagist;
 use Carbon\Carbon;
 use Exception;
 use MongoDB\BSON\UTCDateTime;
+use VIITech\Helpers\Constants\Attributes;
 
 class CarbonHelper
 {
@@ -18,8 +19,8 @@ class CarbonHelper
     {
         try {
             if(!is_null($value)){
-                if (is_array($value) && isset($value["date"])) {
-                    return $value["date"];
+                if (is_array($value) && isset($value[Attributes::DATE])) {
+                    return $value[Attributes::DATE];
                 }
                 return Carbon::instance($value->toDateTime())->format('c');
             }

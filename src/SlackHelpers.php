@@ -5,6 +5,7 @@ namespace VIITech\Helpers;
 use Exception;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7\Request;
+use VIITech\Helpers\Constants\EnvVariables;
 
 class SlackHelpers
 {
@@ -17,7 +18,7 @@ class SlackHelpers
     public static function sendSlackMessage($slack_webhook, $message)
     {
         try {
-            $client = new \GuzzleHttp\Client(env("SSL_CACERT") ? ['verify' => env("SSL_CACERT")] : []);
+            $client = new \GuzzleHttp\Client(env(EnvVariables::SSL_CACERT) ? ['verify' => env(EnvVariables::SSL_CACERT)] : []);
             return $client->send(new Request('POST', $slack_webhook, [], json_encode(["text" => $message])));
         } catch (GuzzleException $e) {
             return $e;
@@ -42,7 +43,7 @@ class SlackHelpers
     {
         try {
             $color = $is_success ? "#3aa648" : "#ce2101";
-            $client = new \GuzzleHttp\Client(env("SSL_CACERT") ? ['verify' => env("SSL_CACERT")] : []);
+            $client = new \GuzzleHttp\Client(env(EnvVariables::SSL_CACERT) ? ['verify' => env(EnvVariables::SSL_CACERT)] : []);
             return $client->send(new Request('POST', $slack_webhook, [], json_encode([
                 "attachments" => [
                     [

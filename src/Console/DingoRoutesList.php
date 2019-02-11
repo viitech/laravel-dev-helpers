@@ -148,6 +148,7 @@ class DingoRoutesList extends RouteListCommand
         if ($limit && $expires) {
             return sprintf('%s req/s', round($limit / ($expires * 60), 2));
         }
+        return null;
     }
 
     /**
@@ -163,7 +164,7 @@ class DingoRoutesList extends RouteListCommand
 
         foreach ($filters as $filter) {
             if ($this->option($filter) && ! $this->{'filterBy'.ucfirst($filter)}($route)) {
-                return;
+                return null;
             }
         }
 

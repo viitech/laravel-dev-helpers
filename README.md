@@ -66,7 +66,6 @@
 - Validate Variable with Alternative `\VIITech\Helpers\GlobalHelpers::validateVarWithAlternative()`
 - Return Response (Array) `\VIITech\Helpers\GlobalHelpers::returnResponse()`
 - Return JSON Response `\VIITech\Helpers\GlobalHelpers::returnJSONResponse()`
-- Get Formatted Carbon Date From UTC Date Time `\VIITech\Helpers\GlobalHelpers::getFormattedCarbonDateFromUTCDateTime()`
 - Generate Random Number `\VIITech\Helpers\GlobalHelpers::generateRandomNumber()`
 - Get Page Title From URL `\VIITech\Helpers\GlobalHelpers::getPageTitle()`
 - Is String English? `\VIITech\Helpers\GlobalHelpers::isEnglish()`
@@ -98,3 +97,6 @@
 ### Firebase Helpers
 - Generate Dynamic Link `\VIITech\Helpers\FirebaseHelpers::generateDynamicLink()`
 - Send Firebase Cloud Message `\VIITech\Helpers\FirebaseHelpers::sendFCM()`
+
+### Carbon Helpers
+- Get Formatted Carbon Date From UTC Date Time `\VIITech\Helpers\CarbonHelper::getFormattedCarbonDateFromUTCDateTime()`
