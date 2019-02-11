@@ -158,7 +158,7 @@ class GlobalHelpers
      * @param mixed $type
      * @return mixed
      */
-    function getValueFromHTTPRequest($request, $key, $default = null, $type = null)
+    static function getValueFromHTTPRequest($request, $key, $default = null, $type = null)
     {
 
         $return_value = null;
