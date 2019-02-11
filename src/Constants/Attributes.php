@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Constants;
+namespace VIITech\Helpers\Constants;
 
 use BenSampo\Enum\Enum;
 
