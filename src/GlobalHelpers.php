@@ -2,9 +2,6 @@
 
 namespace VIITech\Helpers;
 
-use App\Constants\Attributes;
-use App\Constants\CastingTypes;
-use App\Constants\DebuggerLevels;
 use Carbon\Carbon;
 use Dingo\Api\Contract\Http\Request;
 use DOMDocument, DOMXPath, Exception;
@@ -13,6 +10,9 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
 use MongoDB\BSON\UTCDateTime;
 use Symfony\Component\Process\Process;
+use VIITech\Helpers\Constants\Attributes;
+use VIITech\Helpers\Constants\CastingTypes;
+use VIITech\Helpers\Constants\DebuggerLevels;
 
 class GlobalHelpers
 {

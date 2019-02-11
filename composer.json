@@ -30,7 +30,10 @@
     "aws/aws-sdk-php-laravel": "^3.1",
     "nesbot/carbon": "^1.33",
     "darkaonline/l5-swagger": "^5.7",
-    "bensampo/laravel-enum": "^1.16"
+    "bensampo/laravel-enum": "^1.16",
+    "ext-dom": "*",
+    "ext-mongodb": "*",
+    "ext-curl": "*"
   },
   "require-dev": {
     "laravel/lumen-framework": "^5.6",
