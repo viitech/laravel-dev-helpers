@@ -53,6 +53,7 @@
 ### Global Helpers
 - Check App Environment `\VIITech\Helpers\GlobalHelpers::checkEnvironment()`
 - Check Is Development Environment `\VIITech\Helpers\GlobalHelpers::isDevelopmentEnv()`
+- Check Is Testing Environment `\VIITech\Helpers\GlobalHelpers::isTestingEnv()`
 - Get Binary Path `\VIITech\Helpers\GlobalHelpers::getBinaryPath()`
 - Is Valid Object `\VIITech\Helpers\GlobalHelpers::isValidObject()`
 - Return String `\VIITech\Helpers\GlobalHelpers::returnString()`
@@ -99,4 +100,6 @@
 - Send Firebase Cloud Message `\VIITech\Helpers\FirebaseHelpers::sendFCM()`
 
 ### Carbon Helpers
+- Generate Now Timestamp `\VIITech\Helpers\CarbonHelper::generateNowTimestamp()`
+- Get Timestamp from Carbon instance `\VIITech\Helpers\CarbonHelper::toTimestamp()`
 - Get Formatted Carbon Date From UTC Date Time `\VIITech\Helpers\CarbonHelper::getFormattedCarbonDateFromUTCDateTime()`

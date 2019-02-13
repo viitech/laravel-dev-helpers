@@ -22,6 +22,17 @@ class CarbonHelper
     }
 
     /**
+     * Get Timestamp from Carbon instance
+     * @param Carbon $date
+     * @param string $format
+     * @return string
+     */
+    static function toTimestamp($date, $format = 'c')
+    {
+        return $date->format($format);
+    }
+
+    /**
      * Get Formatted Carbon Date From UTC DateTime
      * @param UTCDateTime $value
      * @param string $format

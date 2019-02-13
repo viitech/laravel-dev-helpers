@@ -51,6 +51,15 @@ class GlobalHelpers
     }
 
     /**
+     * Is Testing Environment
+     * @return bool
+     */
+    public static function isTestingEnv()
+    {
+        return static::checkEnvironment(Environments::TESTING);
+    }
+
+    /**
      * Get Binary Path
      * @param string $binary_name
      * @return string|null
@@ -175,9 +184,11 @@ class GlobalHelpers
 
         // validate and cast object
         try {
-            if ($type == CastingTypes::ARRAY) { // array
+            if(is_null($return_value)){
+                return $return_value;
+            } else if ($type == CastingTypes::ARRAY) { // array
                 return (array) $return_value;
-            } elseif ($type == CastingTypes::STRING) { // string
+            } else if ($type == CastingTypes::STRING) { // string
                 return (string) $return_value;
             } else if ($type == CastingTypes::BOOLEAN) { // boolean
                 return (boolean) $return_value;
