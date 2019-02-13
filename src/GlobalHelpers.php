@@ -491,18 +491,56 @@ class GlobalHelpers
 
     /**
      * Return Integer
-     * @param $int
-     * @return null|integer
+     * @param mixed $value
+     * @return integer
      */
-    public static function returnInteger($int)
+    public static function returnInteger($value)
     {
         try {
-            if (is_null($int)) {
-                return 0;
+            if (is_null($value)) {
+                return intval(0);
             }
-            return (int) $int;
+            return intval($value);
         } catch (Exception $e) {
-            return 0;
+            return intval(0);
+        }
+    }
+
+    /**
+     * Format Number
+     * @param mixed $number
+     * @param int $decimals
+     * @param string $decimal_point
+     * @param string $thousands_sep
+     * @return string|mixed
+     */
+    public static function formatNumber($number, $decimals = 1, $decimal_point = '.', $thousands_sep = '')
+    {
+        try {
+            return number_format($number, $decimals, $decimal_point, $thousands_sep);
+        } catch (Exception $e) {
+            try {
+                return (string) $number;
+            } catch (Exception $e) {
+                return $number;
+            }
+        }
+    }
+
+    /**
+     * Return Float
+     * @param mixed $value
+     * @return float
+     */
+    public static function returnFloat($value)
+    {
+        try {
+            if (is_null($value)) {
+                return floatval(0);
+            }
+            return floatval($value);
+        } catch (Exception $e) {
+            return floatval(0);
         }
     }
 

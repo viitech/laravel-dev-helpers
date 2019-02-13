@@ -76,6 +76,8 @@
 - Return value from nullable object `\VIITech\Helpers\GlobalHelpers::returnValueFromNullableObject()`
 - Return value from nullable object `\VIITech\Helpers\GlobalHelpers::getUniqueIDsFromArray()`
 - Return Integer `\VIITech\Helpers\GlobalHelpers::returnInteger()`
+- Format Number `\VIITech\Helpers\GlobalHelpers::formatNumber()`
+- Return Float `\VIITech\Helpers\GlobalHelpers::returnFloat()`
 - Hash Password `\VIITech\Helpers\GlobalHelpers::hashPassword()`
 - Convert Hex to RGB `\VIITech\Helpers\GlobalHelpers::hex2rgb()`
 - set Laravel Environment Value `\VIITech\Helpers\GlobalHelpers::setLaravelEnvironmentValue()`
