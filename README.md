@@ -60,6 +60,7 @@
 - Return Boolean `\VIITech\Helpers\GlobalHelpers::returnBoolean()`
 - Convert String Array To Integer Array `\VIITech\Helpers\GlobalHelpers::convertStringArrayToIntegerArray()`
 - Get Value From HTTP Request `\VIITech\Helpers\GlobalHelpers::getValueFromHTTPRequest()`
+- Get Value as Type `\VIITech\Helpers\GlobalHelpers::getValueAsType()`
 - Convert Comma Separated String to Array `\VIITech\Helpers\GlobalHelpers::convertCommaSeparatedStringToArray()`
 - Get Readable Boolean `\VIITech\Helpers\GlobalHelpers::getReadableBoolean()`
 - Run Shell Command `\VIITech\Helpers\GlobalHelpers::runShellCommand()`

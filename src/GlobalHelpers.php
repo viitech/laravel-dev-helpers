@@ -158,7 +158,7 @@ class GlobalHelpers
      * @param mixed $type
      * @return mixed
      */
-    static function getValueFromHTTPRequest($request, $key, $default = null, $type = null)
+    public static function getValueFromHTTPRequest($request, $key, $default = null, $type = null)
     {
 
         $return_value = null;
@@ -179,6 +179,18 @@ class GlobalHelpers
             $return_value = $default;
         }
 
+        // return value
+        return GlobalHelpers::getValueAsType($return_value, $type);
+    }
+
+    /**
+     * Get Value As Type
+     * @param $type
+     * @param $return_value
+     * @return array|bool|int|string
+     */
+    public static function getValueAsType($return_value, $type = CastingTypes::STRING)
+    {
         if ($return_value === Attributes::FALSE) {
             $return_value = false;
         } else if ($return_value === Attributes::TRUE) {
@@ -361,7 +373,7 @@ class GlobalHelpers
      * @param int $status
      * @return \Dingo\Api\Http\Response|\Illuminate\Http\JsonResponse
      */
-    static function returnJSONResponse($array, $status = Response::HTTP_OK)
+    public static function returnJSONResponse($array, $status = Response::HTTP_OK)
     {
         return response()->json($array, $status);
     }
@@ -482,7 +494,7 @@ class GlobalHelpers
      * @param \Exception|string $e
      * @param string $level
      */
-    static function debugger($e, $level)
+    public static function debugger($e, $level)
     {
         try {
             $debugger_logs_enabled = env(EnvVariables::DEBUGGER_LOGS_ENABLED, false);
@@ -639,7 +651,7 @@ class GlobalHelpers
      * @param $val
      * @return string
      */
-    function returnBooleanString($val)
+    public static function returnBooleanString($val)
     {
         return $val ? Attributes::TRUE : Attributes::FALSE;
     }
@@ -650,7 +662,7 @@ class GlobalHelpers
      * @param bool $dingo_api
      * @return \Dingo\Api\Http\Request|\Illuminate\Http\Request
      */
-    function createAPIRequestObject($data = [], $dingo_api = true)
+    public static function createAPIRequestObject($data = [], $dingo_api = true)
     {
         if($dingo_api){
             $request = new \Dingo\Api\Http\Request();
@@ -666,7 +678,7 @@ class GlobalHelpers
      * @param Request|\Illuminate\Http\Request $request
      * @return bool
      */
-    function isPlatformMobile($request){
+    public static function isPlatformMobile($request){
         $platform = $request->header(Headers::PLATFORM);
         return $platform == Platforms::IOS || $platform == Platforms::ANDROID || $platform == Platforms::MOBILE;
     }
@@ -678,7 +690,7 @@ class GlobalHelpers
      * @param int $error_status_code
      * @return bool|\Illuminate\Http\JsonResponse
      */
-    public function validateRequest($formRequest, $request, $error_status_code = Response::HTTP_BAD_REQUEST)
+    public static function validateRequest($formRequest, $request, $error_status_code = Response::HTTP_BAD_REQUEST)
     {
         $validator = Validator::make($request->all(), $formRequest->rules(),  $formRequest->messages(),  $formRequest->attributes());
         if ($validator->fails()) {
