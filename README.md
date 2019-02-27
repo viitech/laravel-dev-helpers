@@ -65,7 +65,8 @@
 - Run Shell Command `\VIITech\Helpers\GlobalHelpers::runShellCommand()`
 - Run Command In Server `\VIITech\Helpers\GlobalHelpers::runCommandInServer()`
 - Validate Variable with Alternative `\VIITech\Helpers\GlobalHelpers::validateVarWithAlternative()`
-- Return Response (Array) `\VIITech\Helpers\GlobalHelpers::returnResponse()`
+- Return JSON Response (version 1) `\VIITech\Helpers\GlobalHelpers::returnResponse()`
+- Return Formatted JSON Response (version 2) `\VIITech\Helpers\GlobalHelpers::formattedJSONResponse()`
 - Return JSON Response `\VIITech\Helpers\GlobalHelpers::returnJSONResponse()`
 - Generate Random Number `\VIITech\Helpers\GlobalHelpers::generateRandomNumber()`
 - Get Page Title From URL `\VIITech\Helpers\GlobalHelpers::getPageTitle()`
@@ -80,7 +81,9 @@
 - Return Float `\VIITech\Helpers\GlobalHelpers::returnFloat()`
 - Hash Password `\VIITech\Helpers\GlobalHelpers::hashPassword()`
 - Convert Hex to RGB `\VIITech\Helpers\GlobalHelpers::hex2rgb()`
-- set Laravel Environment Value `\VIITech\Helpers\GlobalHelpers::setLaravelEnvironmentValue()`
+- Set Laravel Environment Value `\VIITech\Helpers\GlobalHelpers::setLaravelEnvironmentValue()`
+- Return Boolean as String `\VIITech\Helpers\GlobalHelpers::returnBooleanString()`
+- Create Dingo API Request Object `\VIITech\Helpers\GlobalHelpers::createAPIRequestObject()`
 
 ### Google Helpers
 - Validate Google reCaptcha `\VIITech\Helpers\GoogleHelpers::validateRecaptcha()`

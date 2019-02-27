@@ -34,7 +34,7 @@ class CarbonHelper
 
     /**
      * Get Formatted Carbon Date From UTC DateTime
-     * @param UTCDateTime $value
+     * @param static|string|UTCDateTime $value
      * @param string $format
      * @return mixed
      */
@@ -45,7 +45,10 @@ class CarbonHelper
                 if (is_array($value) && isset($value[Attributes::DATE])) {
                     return $value[Attributes::DATE];
                 }
-                return Carbon::instance($value->toDateTime())->format($format);
+                if(is_a($value, UTCDateTime::class)){
+                    return Carbon::instance($value->toDateTime())->format($format);
+                }
+                return Carbon::parse($value)->format($format);
             }
             return $value;
         } catch (Exception $e) {

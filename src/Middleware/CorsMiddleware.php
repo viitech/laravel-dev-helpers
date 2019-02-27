@@ -3,11 +3,15 @@
 namespace VIITech\Helpers\Middleware;
 
 use Closure;
+use Exception;
 use Illuminate\Http\Response;
 use VIITech\Helpers\Constants\EnvVariables;
+use VIITech\Helpers\GlobalHelpers;
 
-// this will solve cross origin issue
-//source: https://gist.github.com/danharper/06d2386f0b826b669552
+/**
+ * Class CorsMiddleware
+ * @package VIITech\Helpers\Middleware
+ */
 class CorsMiddleware
 {
     /**
@@ -21,18 +25,29 @@ class CorsMiddleware
     {
         //Intercepts OPTIONS requests
         if ($request->isMethod('OPTIONS')) {
-            $response = response('', Response::HTTP_OK);
-        } else {
-            // Pass the request to the next middleware
-            $response = $next($request);
+            return GlobalHelpers::returnResponse(true, '', [], [], Response::HTTP_OK, [
+                'Access-Control-Allow-Origin' => env(EnvVariables::CORS_ALLOW_ORIGIN, '*'),
+                'Access-Control-Allow-Headers' => $request->header('Access-Control-Request-Headers'),
+                'Access-Control-Allow-Methods' => 'HEAD, GET, POST, PUT, PATCH, DELETE'
+            ]);
         }
 
-        // Adds headers to the response
-        $response->header('Access-Control-Allow-Methods', 'HEAD, GET, POST, PUT, PATCH, DELETE');
-        $response->header('Access-Control-Allow-Headers', $request->header('Access-Control-Request-Headers'));
-        $response->header('Access-Control-Allow-Origin', env(EnvVariables::CORS_ALLOW_ORIGIN, '*'));
+        try {
+            // Pass the request to the next middleware
+            $response = $next($request);
 
-        // Sends it
-        return $response;
+            // when downloading file:
+            if(class_basename($response) === "BinaryFileResponse"){
+                return $response;
+            }
+
+            // Adds headers to the response
+            $response->header('Access-Control-Allow-Methods', 'HEAD, GET, POST, PUT, PATCH, DELETE')
+                ->header('Access-Control-Allow-Headers', $request->header('Access-Control-Request-Headers'))
+                ->header('Access-Control-Allow-Origin', env('CORS_ALLOW_ORIGIN', '*'));
+            return $response;
+        } catch (Exception $e) {
+            return $next($request);
+        }
     }
 }

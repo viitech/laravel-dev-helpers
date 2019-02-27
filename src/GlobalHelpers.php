@@ -2,19 +2,22 @@
 
 namespace VIITech\Helpers;
 
-use Carbon\Carbon;
+use VIITech\Helpers\Constants\Headers;
 use Dingo\Api\Contract\Http\Request;
 use DOMDocument, DOMXPath, Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
-use MongoDB\BSON\UTCDateTime;
+use Illuminate\Support\Facades\Validator;
 use Symfony\Component\Process\Process;
 use VIITech\Helpers\Constants\Attributes;
 use VIITech\Helpers\Constants\CastingTypes;
 use VIITech\Helpers\Constants\DebuggerLevels;
 use VIITech\Helpers\Constants\Environments;
 use VIITech\Helpers\Constants\EnvVariables;
+use VIITech\Helpers\Constants\Platforms;
+use VIITech\Helpers\Requests\CustomRequest;
 
 class GlobalHelpers
 {
@@ -300,15 +303,16 @@ class GlobalHelpers
     }
 
     /**
-     * Return Response as JSON
+     * Return Response (returnResponse version 1)
      * @param bool $success
      * @param string $message
      * @param array $data
-     * @param int $status
      * @param array $error
+     * @param int $status
+     * @param array $headers
      * @return JsonResponse
      */
-    public static function returnResponse($success = true, $message = '', $data = [], $error = [], $status = 200)
+    public static function returnResponse($success = true, $message = '', $data = [], $error = [], $status = Response::HTTP_OK, $headers = [])
     {
         if (is_null($data)) {
             $data = [];
@@ -323,14 +327,39 @@ class GlobalHelpers
             Attributes::MESSAGE => $message,
             Attributes::DATA => $data,
             Attributes::ERROR => $error,
-        ], $status);
+        ], $status, $headers);
+    }
+
+    /**
+     * Returns Formatted JSON Response (returnResponse version 2)
+     * @param string $message
+     * @param array $data
+     * @param array $error
+     * @param int $status
+     * @param array $headers
+     * @return JsonResponse
+     */
+    public static function formattedJSONResponse($message = '', $data = [], $error = [], $status = Response::HTTP_OK, $headers = [])
+    {
+        if (is_null($data)) {
+            $data = [];
+        }
+        if (is_null($error)) {
+            $error = [];
+        }
+
+        return response()->json([
+            Attributes::MESSAGE => $message,
+            Attributes::DATA => $data,
+            Attributes::ERROR => $error,
+        ], $status, $headers);
     }
 
     /**
      * Return JSON Response
      * @param array $array
      * @param int $status
-     * @return \Dingo\Api\Http\Response
+     * @return \Dingo\Api\Http\Response|\Illuminate\Http\JsonResponse
      */
     static function returnJSONResponse($array, $status = Response::HTTP_OK)
     {
@@ -552,9 +581,12 @@ class GlobalHelpers
     public static function hashPassword($value)
     {
         try {
-            return app('hash')->make($value);
+            if (Hash::needsRehash($value)) {
+                return Hash::make($value);
+            }
+            return $value;
         } catch (Exception $e) {
-            return null;
+            return $value;
         }
     }
 
@@ -610,6 +642,49 @@ class GlobalHelpers
     function returnBooleanString($val)
     {
         return $val ? Attributes::TRUE : Attributes::FALSE;
+    }
+
+    /**
+     * Create API Request Object
+     * @param array $data
+     * @param bool $dingo_api
+     * @return \Dingo\Api\Http\Request|\Illuminate\Http\Request
+     */
+    function createAPIRequestObject($data = [], $dingo_api = true)
+    {
+        if($dingo_api){
+            $request = new \Dingo\Api\Http\Request();
+        }else{
+            $request = new \Illuminate\Http\Request();
+        }
+        $request->replace($data);
+        return $request;
+    }
+
+    /**
+     * Is Platform Mobile
+     * @param Request|\Illuminate\Http\Request $request
+     * @return bool
+     */
+    function isPlatformMobile($request){
+        $platform = $request->header(Headers::PLATFORM);
+        return $platform == Platforms::IOS || $platform == Platforms::ANDROID || $platform == Platforms::MOBILE;
+    }
+
+    /**
+     * Validate Requests
+     * @param CustomRequest $formRequest
+     * @param \Dingo\Api\Http\Request|\Illuminate\Http\Request $request
+     * @param int $error_status_code
+     * @return bool|\Illuminate\Http\JsonResponse
+     */
+    public function validateRequest($formRequest, $request, $error_status_code = Response::HTTP_BAD_REQUEST)
+    {
+        $validator = Validator::make($request->all(), $formRequest->rules(),  $formRequest->messages(),  $formRequest->attributes());
+        if ($validator->fails()) {
+            return GlobalHelpers::formattedJSONResponse($validator->errors()->first(), null, $validator->errors(), $error_status_code);
+        }
+        return true;
     }
 }
 
