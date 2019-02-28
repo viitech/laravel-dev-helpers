@@ -333,7 +333,7 @@ class GlobalHelpers
             $error = [];
         }
 
-        return response()->json([
+        return JsonResponse::create([
             Attributes::STATUS => $status,
             Attributes::SUCCESS => $success,
             Attributes::MESSAGE => $message,
@@ -360,7 +360,7 @@ class GlobalHelpers
             $error = [];
         }
 
-        return response()->json([
+        return JsonResponse::create([
             Attributes::MESSAGE => $message,
             Attributes::DATA => $data,
             Attributes::ERROR => $error,
@@ -375,7 +375,7 @@ class GlobalHelpers
      */
     public static function returnJSONResponse($array, $status = Response::HTTP_OK)
     {
-        return response()->json($array, $status);
+        return JsonResponse::create($array, $status);
     }
 
     /**
