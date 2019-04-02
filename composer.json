@@ -28,7 +28,7 @@
     "doctrine/dbal": "^2.8",
     "google/apiclient": "^2.0@dev",
     "aws/aws-sdk-php-laravel": "^3.1",
-    "nesbot/carbon": "^1.33",
+    "nesbot/carbon": "^1.25",
     "darkaonline/l5-swagger": "^5.7",
     "bensampo/laravel-enum": "^1.16"
   },
@@ -44,10 +44,7 @@
     "illuminate/hashing": "^5.6",
     "illuminate/http": "^5.6",
     "illuminate/routing": "^5.6",
-    "illuminate/contracts": "^5.6",
-    "ext-dom": "*",
-    "ext-mongodb": "*",
-    "ext-curl": "*"
+    "illuminate/contracts": "^5.6"
   },
   "autoload": {
     "psr-4": {

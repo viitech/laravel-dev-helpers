@@ -112,3 +112,10 @@
 
 ## Lumen Helpers
 - Initialize ResponseFactory `\VIITech\Helpers\LumenHelpers::initResponseFactory()`
+
+## Mongo Helpers
+- Unset Key From Collection `\VIITech\Helpers\MongoHelpers::unsetKeyFromMongodbCollection()`
+
+## Dingo API Helpers
+- Custom Exception Handler `VIITech\Helpers\Packagist\DingoAPI\DingoAPIHelpers::exceptionHandler()`
+- Create Request Object `VIITech\Helpers\Packagist\DingoAPI\DingoAPIHelpers::createRequestObject()`

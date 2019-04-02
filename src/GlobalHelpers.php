@@ -2,6 +2,7 @@
 
 namespace VIITech\Helpers;
 
+use Illuminate\Support\Collection;
 use VIITech\Helpers\Constants\Headers;
 use Dingo\Api\Contract\Http\Request;
 use DOMDocument, DOMXPath, Exception;
@@ -21,19 +22,6 @@ use VIITech\Helpers\Requests\CustomRequest;
 
 class GlobalHelpers
 {
-
-    // Git Branches
-    const GIT_BRANCH_MASTER = "master";
-    const GIT_BRANCH_STAGING = "staging";
-    const GIT_BRANCH_BETA = "beta";
-    const GIT_BRANCH_DEV = "dev";
-
-    // HTTP Request Methods
-    const HTTP_METHOD_GET = 'GET';
-    const HTTP_METHOD_POST = 'POST';
-    const HTTP_METHOD_PUT = 'PUT';
-    const HTTP_METHOD_DELETE = 'DELETE';
-
     /**
      * Check Environment (local, dev, staging, production)
      * @param string $app_env
@@ -152,7 +140,7 @@ class GlobalHelpers
 
     /**
      * Get Value From HTTP Request
-     * @param \Illuminate\Http\Request|Request|\Illuminate\Support\Collection|array $request
+     * @param \Illuminate\Http\Request|Request|Collection|array $request
      * @param string $key
      * @param mixed $default
      * @param mixed $type
@@ -371,11 +359,12 @@ class GlobalHelpers
      * Return JSON Response
      * @param array $array
      * @param int $status
-     * @return \Dingo\Api\Http\Response|\Illuminate\Http\JsonResponse
+     * @param array $headers
+     * @return \Dingo\Api\Http\Response|JsonResponse
      */
-    public static function returnJSONResponse($array, $status = Response::HTTP_OK)
+    public static function returnJSONResponse($array = null, $status = Response::HTTP_OK, $headers = [])
     {
-        return JsonResponse::create($array, $status);
+        return JsonResponse::create($array, $status, $headers);
     }
 
     /**
@@ -491,7 +480,7 @@ class GlobalHelpers
 
     /**
      * Debugger
-     * @param \Exception|string $e
+     * @param Exception|string $e
      * @param string $level
      */
     public static function debugger($e, $level)
@@ -688,7 +677,7 @@ class GlobalHelpers
      * @param CustomRequest $formRequest
      * @param \Dingo\Api\Http\Request|\Illuminate\Http\Request $request
      * @param int $error_status_code
-     * @return bool|\Illuminate\Http\JsonResponse
+     * @return bool|JsonResponse
      */
     public static function validateRequest($formRequest, $request, $error_status_code = Response::HTTP_BAD_REQUEST)
     {
