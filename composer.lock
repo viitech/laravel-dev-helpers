@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c87bb7e2d424a5c729d196a5f89e682b",
+    "content-hash": "93e2cc8b21cb5286f6b8ae3c7b43e0ae",
     "packages": [
         {
             "name": "appzcoder/lumen-routes-list",
@@ -5943,8 +5943,7 @@
         "sensiolabs/security-checker": 20,
         "laravelcollective/remote": 20,
         "google/apiclient": 20,
-        "tymon/jwt-auth": 20,
-        "dingo/api": 20
+        "tymon/jwt-auth": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
