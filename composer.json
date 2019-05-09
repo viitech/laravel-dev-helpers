@@ -33,18 +33,18 @@
     "bensampo/laravel-enum": "^1.16"
   },
   "require-dev": {
-    "laravel/lumen-framework": "^5.*",
+    "laravel/lumen-framework": "^5",
     "tymon/jwt-auth": "1.0.*@dev",
     "dingo/api": "^2.0",
-    "illuminate/session": "^5.*",
-    "illuminate/cookie": "^5.*",
-    "illuminate/cache": "^5.*",
-    "illuminate/validation": "^5.*",
-    "illuminate/mail": "^5.*",
-    "illuminate/hashing": "^5.*",
-    "illuminate/http": "^5.*",
-    "illuminate/routing": "^5.*",
-    "illuminate/contracts": "^5.*"
+    "illuminate/session": "^5",
+    "illuminate/cookie": "^5",
+    "illuminate/cache": "^5",
+    "illuminate/validation": "^5",
+    "illuminate/mail": "^5*",
+    "illuminate/hashing": "^5",
+    "illuminate/http": "^5",
+    "illuminate/routing": "^5",
+    "illuminate/contracts": "^5"
   },
   "autoload": {
     "psr-4": {
