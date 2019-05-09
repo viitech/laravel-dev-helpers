@@ -1,44 +1,46 @@
 {
-  "name": "viitech/laravel-dev-helpers",
-  "description": "Laravel Dev Helper Functions",
-  "minimum-stability": "dev",
-  "prefer-stable": true,
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "VII Tech Solutions",
-      "email": "webmaster@viitech.net"
+    "name": "viitech/laravel-dev-helpers",
+    "description": "Laravel Dev Helper Functions",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "VII Tech Solutions",
+            "email": "webmaster@viitech.net"
+        }
+    ],
+    "require": {
+        "m4tthumphrey/php-gitlab-api": "^9.9",
+        "guzzlehttp/guzzle": "^6.3",
+        "php-http/guzzle6-adapter": "^1.1",
+        "sentry/sentry-laravel": "^1.0",
+        "league/flysystem": "^1.0",
+        "league/flysystem-aws-s3-v3": "^1.0",
+        "spatie/laravel-backup": "^5.8",
+        "ramsey/uuid": "^3.7",
+        "appzcoder/lumen-routes-list": "^1.0",
+        "laravel/tinker": "^1.0",
+        "sensiolabs/security-checker": "^5.0@dev",
+        "laravelista/lumen-vendor-publish": "^2.1",
+        "laravelcollective/remote": "^5.6@dev",
+        "symfony/process": "^4.1",
+        "doctrine/dbal": "^2.8",
+        "google/apiclient": "^2.0@dev",
+        "aws/aws-sdk-php-laravel": "^3.1",
+        "nesbot/carbon": "^1.25",
+        "darkaonline/l5-swagger": "^5.7",
+        "bensampo/laravel-enum": "^1.16",
+        "tymon/jwt-auth": "1.0.*@dev",
+        "dingo/api": "^2.0"
+    },
+    "require-dev": {
+        "laravel/lumen-framework": "^5.6",
+        "laravel/laravel": "^5.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "VIITech\\Helpers\\": "src/"
+        }
     }
-  ],
-  "require": {
-    "m4tthumphrey/php-gitlab-api": "^9.9",
-    "guzzlehttp/guzzle": "^6.3",
-    "php-http/guzzle6-adapter": "^1.1",
-    "sentry/sentry-laravel": "^0.9.0",
-    "league/flysystem": "^1.0",
-    "league/flysystem-aws-s3-v3": "^1.0",
-    "spatie/laravel-backup": "^5.8",
-    "ramsey/uuid": "^3.7",
-    "appzcoder/lumen-routes-list": "^1.0",
-    "laravel/tinker": "^1.0",
-    "sensiolabs/security-checker": "^5.0@dev",
-    "laravelista/lumen-vendor-publish": "^2.1",
-    "laravelcollective/remote": "^5.6@dev",
-    "symfony/process": "^4.1",
-    "doctrine/dbal": "^2.8",
-    "google/apiclient": "^2.0@dev",
-    "aws/aws-sdk-php-laravel": "^3.1",
-    "nesbot/carbon": "^1.25",
-    "darkaonline/l5-swagger": "^5.7",
-    "bensampo/laravel-enum": "^1.16"
-  },
-  "require-dev": {
-    "tymon/jwt-auth": "1.0.*@dev",
-    "dingo/api": "^2.0"
-  },
-  "autoload": {
-    "psr-4": {
-      "VIITech\\Helpers\\": "src/"
-    }
-  }
 }
