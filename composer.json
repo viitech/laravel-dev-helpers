@@ -27,7 +27,7 @@
         "doctrine/dbal": "^2.9",
         "google/apiclient": "^2.2",
         "aws/aws-sdk-php-laravel": "^3.3",
-        "nesbot/carbon": "^2.17",
+        "nesbot/carbon": "^1.37|^2.17",
         "darkaonline/l5-swagger": "^5.8",
         "bensampo/laravel-enum": "^1.19",
         "tymon/jwt-auth": "1.0.*@dev",
