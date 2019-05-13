@@ -4,7 +4,12 @@ namespace VIITech\Helpers\Packagist\DingoAPI;
 
 use Dingo\Api\Exception\Handler;
 use Dingo\Api\Http\Request;
+use Exception;
 use Illuminate\Http\Response;
+use MongoDB\Driver\Exception\AuthenticationException;
+use MongoDB\Driver\Exception\ConnectionException;
+use MongoDB\Driver\Exception\ConnectionTimeoutException;
+use MongoDB\Driver\Exception\ExecutionTimeoutException;
 use VIITech\Helpers\GlobalHelpers;
 
 class DingoAPIHelpers
@@ -16,15 +21,15 @@ class DingoAPIHelpers
     public static function exceptionHandler($exception_handler)
     {
         try {
-            app(Handler::class)->register(function (\Exception $exception) use ($exception_handler) {
+            app(Handler::class)->register(function (Exception $exception) use ($exception_handler) {
                 if (class_exists(\MongoDB\Driver\Exception\Exception::class) &&
-                    ($exception instanceof \MongoDB\Driver\Exception\AuthenticationException || $exception instanceof \MongoDB\Driver\Exception\ConnectionException ||
-                        $exception instanceof \MongoDB\Driver\Exception\ConnectionTimeoutException || $exception instanceof \MongoDB\Driver\Exception\ExecutionTimeoutException)) {
+                    ($exception instanceof AuthenticationException || $exception instanceof ConnectionException ||
+                        $exception instanceof ConnectionTimeoutException || $exception instanceof ExecutionTimeoutException)) {
                     return GlobalHelpers::returnResponse(false, "Unavailable Service!", [], [], Response::HTTP_SERVICE_UNAVAILABLE);
                 }
                 return app($exception_handler)->report($exception);
             });
-        } catch (\Exception $e) {}
+        } catch (Exception $e) {}
     }
 
     /**

@@ -2,15 +2,18 @@
 
 namespace VIITech\Helpers\Packagist;
 
+use Appzcoder\LumenRoutesList\RoutesCommandServiceProvider;
+use Laravel\Lumen\Application;
+
 class LumenRoutesListHelper
 {
 
     /**
      * Register Service Provider
-     * @param \Laravel\Lumen\Application $app
+     * @param Application $app
      */
     public static function registerServiceProvider($app)
     {
-        $app->register(\Appzcoder\LumenRoutesList\RoutesCommandServiceProvider::class);
+        $app->register(RoutesCommandServiceProvider::class);
     }
 }

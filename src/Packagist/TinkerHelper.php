@@ -2,14 +2,17 @@
 
 namespace VIITech\Helpers\Packagist;
 
+use Laravel\Lumen\Application;
+use Laravel\Tinker\TinkerServiceProvider;
+
 class TinkerHelper
 {
     /**
      * Register Service Provider
-     * @param \Laravel\Lumen\Application $app
+     * @param Application $app
      */
     public static function registerServiceProvider($app)
     {
-        $app->register(\Laravel\Tinker\TinkerServiceProvider::class);
+        $app->register(TinkerServiceProvider::class);
     }
 }

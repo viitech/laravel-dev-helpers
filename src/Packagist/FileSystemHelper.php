@@ -2,12 +2,18 @@
 
 namespace VIITech\Helpers\Packagist;
 
+use Illuminate\Contracts\Filesystem\Factory;
+use Illuminate\Filesystem\FilesystemManager;
+use Illuminate\Filesystem\FilesystemServiceProvider;
+use Illuminate\Support\Facades\Storage;
+use Laravel\Lumen\Application;
+
 class FileSystemHelper
 {
 
     /**
      * Configure
-     * @param \Laravel\Lumen\Application $app
+     * @param Application $app
      */
     public static function configure($app)
     {
@@ -19,32 +25,32 @@ class FileSystemHelper
      */
     public static function createClassAlias()
     {
-        class_exists('Storage') or class_alias(\Illuminate\Support\Facades\Storage::class, 'Storage');
+        class_exists('Storage') or class_alias(Storage::class, 'Storage');
     }
 
     /**
      * Register Service Provider
-     * @param \Laravel\Lumen\Application $app
+     * @param Application $app
      */
     public static function registerContainerBinding($app)
     {
         $app->singleton(
-            \Illuminate\Contracts\Filesystem\Factory::class,
+            Factory::class,
             function ($app) {
-                return new \Illuminate\Filesystem\FilesystemManager($app);
+                return new FilesystemManager($app);
             }
         );
-        $app->bind(\Illuminate\Contracts\Filesystem\Factory::class, function ($app) {
+        $app->bind(Factory::class, function ($app) {
             return $app['filesystem'];
         });
     }
 
     /**
      * Register Service Provider
-     * @param \Laravel\Lumen\Application $app
+     * @param Application $app
      */
     public static function registerServiceProvider($app)
     {
-        $app->register(\Illuminate\Filesystem\FilesystemServiceProvider::class);
+        $app->register(FilesystemServiceProvider::class);
     }
 }

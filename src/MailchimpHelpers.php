@@ -4,7 +4,10 @@ namespace VIITech\Helpers;
 
 use Exception;
 use Google_Client;
+use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Psr7\Request;
+use Psr\Http\Message\ResponseInterface;
 use VIITech\Helpers\Constants\DebuggerLevels;
 use VIITech\Helpers\Constants\EnvVariables;
 
@@ -15,13 +18,13 @@ class MailchimpHelpers
      * Subscribe Email
      * @param string $url
      * @param string $email
-     * @return Exception|mixed|\Psr\Http\Message\ResponseInterface|GuzzleException
+     * @return Exception|mixed|ResponseInterface|GuzzleException
      */
     public function subscribeEmail($url, $email)
     {
         try {
-            $client = new \GuzzleHttp\Client(env(EnvVariables::SSL_CACERT) ? ['verify' => env(EnvVariables::SSL_CACERT)] : []);
-            $result = $client->send(new \GuzzleHttp\Psr7\Request('POST', $url, [], json_encode([
+            $client = new Client(env(EnvVariables::SSL_CACERT) ? ['verify' => env(EnvVariables::SSL_CACERT)] : []);
+            $result = $client->send(new Request('POST', $url, [], json_encode([
                 "email" => $email
             ])));
             return $result;

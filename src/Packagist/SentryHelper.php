@@ -2,8 +2,9 @@
 
 namespace VIITech\Helpers\Packagist;
 
-
 use Illuminate\Foundation\Exceptions\Handler;
+use Laravel\Lumen\Application;
+use Sentry\Laravel\ServiceProvider;
 use VIITech\Helpers\Constants\EnvVariables;
 
 class SentryHelper
@@ -11,11 +12,11 @@ class SentryHelper
 
     /**
      * Register Service Provider
-     * @param \Laravel\Lumen\Application $app
+     * @param Application $app
      */
     public static function registerServiceProvider($app)
     {
-        $app->register(\Sentry\SentryLaravel\SentryLumenServiceProvider::class);
+        $app->register(ServiceProvider::class);
     }
 
     /**

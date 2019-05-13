@@ -3,6 +3,7 @@
 namespace VIITech\Helpers;
 
 use Exception;
+use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use VIITech\Helpers\Constants\DebuggerLevels;
 use VIITech\Helpers\Constants\EnvVariables;
@@ -19,7 +20,7 @@ class FirebaseHelpers
     public static function generateDynamicLink($api_key, $longDynamicLink, $suffix_option = "UNGUESSABLE")
     {
         try {
-            $guzzle_request = (new \GuzzleHttp\Client())->request('POST', 'https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=' . $api_key, [
+            $guzzle_request = (new Client())->request('POST', 'https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=' . $api_key, [
                 'json' => [
                     "longDynamicLink" => $longDynamicLink,
                     "suffix" => [
@@ -46,7 +47,7 @@ class FirebaseHelpers
      */
     public static function sendFCM($data_array, $is_logging_enabled = false){
         try {
-            $guzzle_request = (new \GuzzleHttp\Client())->request('POST', 'https://fcm.googleapis.com/fcm/send', [
+            $guzzle_request = (new Client())->request('POST', 'https://fcm.googleapis.com/fcm/send', [
                 'headers' => [
                     'Content-Type' => 'application/json',
                     'Authorization' => 'key=' . env(EnvVariables::FCM_KEY)

@@ -3,8 +3,10 @@
 namespace VIITech\Helpers;
 
 use Exception;
+use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7\Request;
+use Psr\Http\Message\ResponseInterface;
 use VIITech\Helpers\Constants\EnvVariables;
 
 class SlackHelpers
@@ -13,12 +15,12 @@ class SlackHelpers
      * Send Slack with Details
      * @param string $slack_webhook Slack Incoming Webhook
      * @param string $message Message
-     * @return Exception|GuzzleException|mixed|\Psr\Http\Message\ResponseInterface
+     * @return Exception|GuzzleException|mixed|ResponseInterface
      */
     public static function sendSlackMessage($slack_webhook, $message)
     {
         try {
-            $client = new \GuzzleHttp\Client(env(EnvVariables::SSL_CACERT) ? ['verify' => env(EnvVariables::SSL_CACERT)] : []);
+            $client = new Client(env(EnvVariables::SSL_CACERT) ? ['verify' => env(EnvVariables::SSL_CACERT)] : []);
             return $client->send(new Request('POST', $slack_webhook, [], json_encode(["text" => $message])));
         } catch (GuzzleException $e) {
             return $e;
@@ -37,13 +39,13 @@ class SlackHelpers
      * @param string $username
      * @param string $icon_url
      * @param string $icon_emoji
-     * @return Exception|GuzzleException|mixed|\Psr\Http\Message\ResponseInterface
+     * @return Exception|GuzzleException|mixed|ResponseInterface
      */
     public static function sendSlackWithDetails($slack_webhook, $is_success, $title, $message, $pretext, $username = null, $icon_url = null, $icon_emoji = null)
     {
         try {
             $color = $is_success ? "#3aa648" : "#ce2101";
-            $client = new \GuzzleHttp\Client(env(EnvVariables::SSL_CACERT) ? ['verify' => env(EnvVariables::SSL_CACERT)] : []);
+            $client = new Client(env(EnvVariables::SSL_CACERT) ? ['verify' => env(EnvVariables::SSL_CACERT)] : []);
             return $client->send(new Request('POST', $slack_webhook, [], json_encode([
                 "attachments" => [
                     [

@@ -2,6 +2,7 @@
 
 namespace VIITech\Helpers\Exceptions;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\MessageBag;
 use Dingo\Api\Contract\Debug\MessageBagErrors;
 use Symfony\Component\HttpKernel\Exception\HttpException;
@@ -13,7 +14,7 @@ class CustomException extends HttpException implements MessageBagErrors
     /**
      * MessageBag errors.
      *
-     * @var \Illuminate\Support\MessageBag
+     * @var MessageBag
      */
     protected $errors;
 
@@ -21,7 +22,7 @@ class CustomException extends HttpException implements MessageBagErrors
      * Create a new resource exception instance.
      *
      * @param string $message
-     * @param \Illuminate\Support\MessageBag|array $errors
+     * @param MessageBag|array $errors
      * @param int $code
      */
     public function __construct($message = null, $errors = null, $code = 200)
@@ -41,7 +42,7 @@ class CustomException extends HttpException implements MessageBagErrors
     /**
      * Get the errors message bag.
      *
-     * @return \Illuminate\Support\MessageBag
+     * @return MessageBag
      */
     public function getErrors()
     {
@@ -67,7 +68,7 @@ class CustomException extends HttpException implements MessageBagErrors
      * @param array $data
      * @param int $status
      * @param array $error
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function render($request, $success, $message, $data, $status, $error)
     {

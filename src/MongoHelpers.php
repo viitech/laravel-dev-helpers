@@ -2,6 +2,7 @@
 
 namespace VIITech\Helpers;
 
+use Exception;
 use Illuminate\Support\Facades\DB;
 
 class MongoHelpers
@@ -20,7 +21,7 @@ class MongoHelpers
     {
         try {
             return DB::connection($db_connection)->collection($collection_name)->where($item_key, $item_value)->unset($remove_key);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return false;
         }
     }

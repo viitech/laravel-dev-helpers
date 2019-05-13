@@ -2,6 +2,7 @@
 
 namespace VIITech\Helpers\Console;
 
+use Dingo\Api\Routing\Route;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Dingo\Api\Routing\Router;
@@ -13,7 +14,7 @@ class DingoRoutesList extends RouteListCommand
     /**
      * Dingo router instance.
      *
-     * @var \Dingo\Api\Routing\Router
+     * @var Router
      */
     protected $router;
 
@@ -48,7 +49,7 @@ class DingoRoutesList extends RouteListCommand
     /**
      * Create a new routes command instance.
      *
-     * @param \Dingo\Api\Routing\Router $router
+     * @param Router $router
      *
      * @return void
      */
@@ -137,7 +138,7 @@ class DingoRoutesList extends RouteListCommand
      * idea of how many requests you'd be able to fire off per second
      * on the route.
      *
-     * @param \Dingo\Api\Routing\Route $route
+     * @param Route $route
      *
      * @return null|string
      */

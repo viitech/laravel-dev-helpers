@@ -2,12 +2,16 @@
 
 namespace VIITech\Helpers\Packagist;
 
+use Illuminate\Notifications\NotificationServiceProvider;
+use Laravel\Lumen\Application;
+use Spatie\Backup\BackupServiceProvider;
+
 class BackupHelper
 {
 
     /**
      * Configure
-     * @param \Laravel\Lumen\Application $app
+     * @param Application $app
      */
     public static function configure($app)
     {
@@ -16,11 +20,11 @@ class BackupHelper
 
     /**
      * Register Service Provider
-     * @param \Laravel\Lumen\Application $app
+     * @param Application $app
      */
     public static function registerServiceProvider($app)
     {
-        $app->register(\Spatie\Backup\BackupServiceProvider::class);
-        $app->register(\Illuminate\Notifications\NotificationServiceProvider::class);
+        $app->register(BackupServiceProvider::class);
+        $app->register(NotificationServiceProvider::class);
     }
 }
