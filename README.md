@@ -10,6 +10,10 @@
  
 ## Console
 
+### Environment Set Value
+1. Add `\VIITech\Helpers\Console\EnvironmentSetCommand::class` to `Kernal.php`
+2. Run `php artisan env:set app_name Example`
+
 ### Dingo API Custom Exception Handler
 1. Add `DingoAPIHelpers::exceptionHandler(App\Exceptions\Handler::class);` to `bootstrap/app.php`
 
