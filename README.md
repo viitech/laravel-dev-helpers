@@ -57,6 +57,8 @@
 ### Global Helpers
 - Check App Environment `\VIITech\Helpers\GlobalHelpers::checkEnvironment()`
 - Check Is Development Environment `\VIITech\Helpers\GlobalHelpers::isDevelopmentEnv()`
+- Check Is Staging Environment `\VIITech\Helpers\GlobalHelpers::isStagingEnv()`
+- Check Is Production Environment `\VIITech\Helpers\GlobalHelpers::isProductionEnv()`
 - Check Is Testing Environment `\VIITech\Helpers\GlobalHelpers::isTestingEnv()`
 - Get Binary Path `\VIITech\Helpers\GlobalHelpers::getBinaryPath()`
 - Is Valid Object `\VIITech\Helpers\GlobalHelpers::isValidObject()`

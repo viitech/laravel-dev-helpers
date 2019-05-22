@@ -42,6 +42,24 @@ class GlobalHelpers
     }
 
     /**
+     * Is Staging Environment
+     * @return bool
+     */
+    public static function isStagingEnv()
+    {
+        return static::checkEnvironment(Environments::STAGING);
+    }
+
+    /**
+     * Is Production Environment
+     * @return bool
+     */
+    public static function isProductionEnv()
+    {
+        return static::checkEnvironment(Environments::PRODUCTION);
+    }
+
+    /**
      * Is Testing Environment
      * @return bool
      */
