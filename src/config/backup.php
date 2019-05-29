@@ -8,6 +8,7 @@ use Spatie\Backup\Notifications\Notifications\CleanupWasSuccessful;
 use Spatie\Backup\Notifications\Notifications\HealthyBackupWasFound;
 use Spatie\Backup\Notifications\Notifications\UnhealthyBackupWasFound;
 use Spatie\Backup\Tasks\Cleanup\Strategies\DefaultStrategy;
+use VIITech\Helpers\Constants\EnvVariables;
 
 return [
 
@@ -105,7 +106,7 @@ return [
         ],
 
         'slack' => [
-            'webhook_url' => env("SLACK_WEBHOOK", ""),
+            'webhook_url' => env(EnvVariables::SLACK_WEBHOOK_URL, ""),
 
             /*
              * If this is set to null the default channel of the webhook will be used.
