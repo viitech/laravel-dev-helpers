@@ -15,4 +15,6 @@ abstract class EnvVariables extends Enum
     const FORCE_HTTPS = "FORCE_HTTPS";
     const ENABLE_JWT = "ENABLE_JWT";
     const API_CUSTOM_SERIALIZER = "API_CUSTOM_SERIALIZER";
+    const SLACK_MESSAGES_ENABLED = "SLACK_MESSAGES_ENABLED";
+    const SLACK_WEBHOOK_URL = "SLACK_WEBHOOK_URL";
 }
