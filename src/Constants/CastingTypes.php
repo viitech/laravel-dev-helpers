@@ -10,4 +10,5 @@ abstract class CastingTypes extends Enum
     const INTEGER = "integer";
     const BOOLEAN = "boolean";
     const ARRAY = "array";
+    const FLOAT = "float";
 }
