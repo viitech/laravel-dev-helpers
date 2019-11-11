@@ -21,7 +21,7 @@
         "appzcoder/lumen-routes-list": "^1.0",
         "laravel/tinker": "^1.0",
         "sensiolabs/security-checker": "^5.0|^6.0",
-        "laravelista/lumen-vendor-publish": "^2.1",
+        "laravelista/lumen-vendor-publish": "^2.1|^6.0",
         "laravelcollective/remote": "^5.8|^6.0",
         "symfony/process": "^4.2",
         "doctrine/dbal": "^2.9",
