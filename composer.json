@@ -19,7 +19,7 @@
         "spatie/laravel-backup": "^5.8|^6.0",
         "ramsey/uuid": "^3.7",
         "appzcoder/lumen-routes-list": "^1.0",
-        "laravel/tinker": "^1.0",
+        "laravel/tinker": "^1.0|^2.0",
         "sensiolabs/security-checker": "^5.0|^6.0",
         "laravelista/lumen-vendor-publish": "^2.1",
         "laravelcollective/remote": "^5.8|^6.0",
