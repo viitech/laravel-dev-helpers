@@ -7,6 +7,10 @@ use Laravel\Lumen\Application;
 use Sentry\Laravel\ServiceProvider;
 use VIITech\Helpers\Constants\EnvVariables;
 
+/**
+ * Class SentryHelper
+ * @package VIITech\Helpers\Packagist
+ */
 class SentryHelper
 {
 
@@ -26,8 +30,10 @@ class SentryHelper
      */
     public static function capture($handler, $e)
     {
-        if (app()->bound('sentry') && $handler->shouldReport($e) && env(EnvVariables::SENTRY_ENABLED, true)) {
-            app('sentry')->captureException($e);
-        }
+        try {
+            if (app()->bound('sentry') && $handler->shouldReport($e) && env(EnvVariables::SENTRY_ENABLED, true)) {
+                app('sentry')->captureException($e);
+            }
+        } catch (\Exception $e) {}
     }
 }
