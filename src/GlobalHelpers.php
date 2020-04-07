@@ -2,7 +2,10 @@
 
 namespace VIITech\Helpers;
 
+use App\Models\CustomModel;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 use VIITech\Helpers\Constants\Headers;
 use Dingo\Api\Contract\Http\Request;
 use DOMDocument, DOMXPath, Exception;
@@ -19,6 +22,7 @@ use VIITech\Helpers\Constants\Environments;
 use VIITech\Helpers\Constants\EnvVariables;
 use VIITech\Helpers\Constants\Platforms;
 use VIITech\Helpers\Requests\CustomRequest;
+use Webpatser\Uuid\Uuid;
 
 class GlobalHelpers
 {
@@ -243,7 +247,11 @@ class GlobalHelpers
      */
     public static function getReadableBoolean($bool)
     {
-        return $bool == 0 ? "No" : "Yes";
+        try {
+            return $bool == 0 ? "No" : "Yes";
+        } catch (Exception $e) {
+            return "No";
+        }
     }
 
     /**
@@ -704,6 +712,75 @@ class GlobalHelpers
             return GlobalHelpers::formattedJSONResponse($validator->errors()->first(), null, $validator->errors(), $error_status_code);
         }
         return true;
+    }
+
+    /**
+     * Readable Text
+     * @param string $value
+     * @return string
+     */
+    public static function readableText($value){
+        if(!is_string($value)){
+            return $value;
+        }
+        return ucfirst(Str::lower(str_replace("-", " ", $value)));
+    }
+
+    /**
+     * Return Boolean Array
+     * @return array
+     */
+    public static function returnBooleanArray()
+    {
+        return [
+            0 => "No",
+            1 => "Yes"
+        ];
+    }
+
+    /**
+     * Generate UUID
+     * @param Model|string $model
+     * @param string $attribute
+     * @return mixed|null
+     */
+    static function generateUUID($model, $attribute = Attributes::UUID)
+    {
+        try {
+            $uuid = str_replace('-', '', Uuid::generate(1));
+            if (!is_null($model)) {
+                do {
+                    $uuid = str_replace('-', '', Uuid::generate(1));
+                } while ($model::where($attribute, $uuid)->exists());
+            }
+            return $uuid;
+        } catch (Exception $e) {
+            return null;
+        }
+    }
+
+    /**
+     * Offset Unset Attributes from Request
+     * @param \Illuminate\Http\Request $request
+     * @param $array
+     */
+    static function offsetUnsetAttributesFromRequest(&$request, $array)
+    {
+        foreach ($array as $attribute){
+            $request->offsetUnset($attribute);
+        }
+    }
+
+    /**
+     * Get Value from HTTP $_GET Request
+     * @param $attribute
+     * @return mixed|string
+     */
+    public static function getValueFromHTTPGETTRequest($attribute){
+        if(isset($_GET[$attribute])){
+            return $_GET[$attribute];
+        }
+        return "";
     }
 }
 

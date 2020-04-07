@@ -91,6 +91,13 @@
 - Set Laravel Environment Value `\VIITech\Helpers\GlobalHelpers::setLaravelEnvironmentValue()`
 - Return Boolean as String `\VIITech\Helpers\GlobalHelpers::returnBooleanString()`
 - Create Dingo API Request Object `\VIITech\Helpers\GlobalHelpers::createAPIRequestObject()`
+- Is Mobile Platform `\VIITech\Helpers\GlobalHelpers::isPlatformMobile()`
+- Validate Request `\VIITech\Helpers\GlobalHelpers::validateRequest()`
+- Return Readable Text `\VIITech\Helpers\GlobalHelpers::readableText()`
+- Return Boolean Array `\VIITech\Helpers\GlobalHelpers::returnBooleanArray()`
+- Generate UUID `\VIITech\Helpers\GlobalHelpers::generateUUID()`
+- Offset Unset Attributes from Request `\VIITech\Helpers\GlobalHelpers::offsetUnsetAttributesFromRequest()`
+- Get Value from HTTP $_GET Request `\VIITech\Helpers\GlobalHelpers::getValueFromHTTPGETTRequest()`
 
 ### Google Helpers
 - Validate Google reCaptcha `\VIITech\Helpers\GoogleHelpers::validateRecaptcha()`
