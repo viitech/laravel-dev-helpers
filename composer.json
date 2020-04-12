@@ -13,10 +13,10 @@
     "require": {
         "m4tthumphrey/php-gitlab-api": "^9.13",
         "guzzlehttp/guzzle": "^6.3",
-        "sentry/sentry-laravel": "^0.8|^1.0",
+        "sentry/sentry-laravel": "0.*|1.*",
         "league/flysystem": "^1.0",
         "league/flysystem-aws-s3-v3": "^1.0",
-        "spatie/laravel-backup": "^5.8|^6.0",
+        "spatie/laravel-backup": "5.*|6.*",
         "ramsey/uuid": "^3.7",
         "appzcoder/lumen-routes-list": "^1.0",
         "laravel/tinker": "^1.0|^2.0",
@@ -27,17 +27,17 @@
         "doctrine/dbal": "^2.9",
         "google/apiclient": "^2.2",
         "aws/aws-sdk-php-laravel": "^3.3",
-        "nesbot/carbon": "^1.37|^2.17",
-        "darkaonline/l5-swagger": "^5.8|^6.0",
+        "nesbot/carbon": "1.*|2.*",
+        "darkaonline/l5-swagger": "5.*|6.*",
         "bensampo/laravel-enum": "^1.19",
-        "tymon/jwt-auth": "1.0.*@dev",
-        "dingo/api": "^0.8|^1.0|^2.2|^3.0",
+        "tymon/jwt-auth": "0.*|1.*|2.*",
+        "dingo/api": "0.*|1.*|2.*|3.*",
         "webpatser/laravel-uuid": "^3.0",
-        "dingo/blueprint": "^0.1|^0.2|^3.0"
+        "dingo/blueprint": "0.*|3.*"
     },
     "require-dev": {
-        "laravel/lumen-framework": "^5.6|^5.8|^6.0|^7.0",
-        "laravel/laravel": "^5.6|^5.8|^6.0|^7.0"
+        "laravel/lumen-framework": "5.*|6.*|7.*",
+        "laravel/laravel": "5.*|6.*|7.*"
     },
     "autoload": {
         "psr-4": {
