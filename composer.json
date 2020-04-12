@@ -32,7 +32,8 @@
         "bensampo/laravel-enum": "^1.19",
         "tymon/jwt-auth": "1.0.*@dev",
         "dingo/api": "^2.2|^3.0",
-        "webpatser/laravel-uuid": "^3.0"
+        "webpatser/laravel-uuid": "^3.0",
+        "dingo/blueprint": "^0.2|^3.0"
     },
     "require-dev": {
         "laravel/lumen-framework": "^5.6|^5.8|^6.0|^7.0",
