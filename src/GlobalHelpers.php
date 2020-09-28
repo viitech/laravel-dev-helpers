@@ -240,19 +240,26 @@ class GlobalHelpers
         return $data;
     }
 
-    /**
-     * Get Readable Boolean
-     * @param bool $bool true (yes) or false (no)
-     * @return string Yes or No
-     */
-    public static function getReadableBoolean($bool)
-    {
-        try {
-            return $bool == 0 ? "No" : "Yes";
-        } catch (Exception $e) {
-            return "No";
-        }
-    }
+	/**
+	 * Get Readable Boolean
+	 * @param bool $bool true (yes) or false (no)
+	 * @param string $fallback (optional) will be used if the provided $bool is neither true nor false (ie empty or null)
+	 * @return string Yes, No, or "" (empty string)
+	 */
+	public static function getReadableBoolean($bool, $fallback = "")
+	{
+		try {
+			if ($bool === 0) {
+				return "No";
+			} else if ($bool === 1) {
+				return "Yes";
+			} else {
+				return $fallback;
+			}
+		} catch (Exception $e) {
+			return $fallback;
+		}
+	}
 
     /**
      * Run Shell Command
