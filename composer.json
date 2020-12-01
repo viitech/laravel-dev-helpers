@@ -13,7 +13,7 @@
     "require": {
         "m4tthumphrey/php-gitlab-api": "^9.13",
         "guzzlehttp/guzzle": "6.*|7.*",
-        "sentry/sentry-laravel": "0.*|1.*",
+        "sentry/sentry-laravel": "0.*|1.*|2.*",
         "league/flysystem": "^1.0",
         "league/flysystem-aws-s3-v3": "^1.0",
         "spatie/laravel-backup": "5.*|6.*",
