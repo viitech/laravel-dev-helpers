@@ -4,7 +4,11 @@ namespace VIITech\Helpers\Constants;
 
 use BenSampo\Enum\Enum;
 
-abstract class Environments extends Enum
+/**
+ * Class Environments
+ * @package VIITech\Helpers\Constants
+ */
+class Environments extends Enum
 {
     const LOCAL = "local";
     const DEVELOPMENT = "dev";

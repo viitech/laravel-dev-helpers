@@ -4,7 +4,11 @@ namespace VIITech\Helpers\Constants;
 
 use BenSampo\Enum\Enum;
 
-abstract class DebuggerLevels extends Enum
+/**
+ * Class DebuggerLevels
+ * @package VIITech\Helpers\Constants
+ */
+class DebuggerLevels extends Enum
 {
     const INFO = "info";
     const ERROR = "error";

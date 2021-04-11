@@ -4,7 +4,11 @@ namespace VIITech\Helpers\Constants;
 
 use BenSampo\Enum\Enum;
 
-abstract class HTTPMethods extends Enum
+/**
+ * Class HTTPMethods
+ * @package VIITech\Helpers\Constants
+ */
+class HTTPMethods extends Enum
 {
     const GET = 'GET';
     const POST = 'POST';

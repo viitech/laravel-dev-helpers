@@ -46,6 +46,13 @@ class GlobalHelpers
     }
 
     /**
+     * Get Readable Text
+     */
+    static function readableText($text){
+        return ucwords(strtolower(str_replace("_", " ", $text)));
+    }
+
+    /**
      * Is Staging Environment
      * @return bool
      */

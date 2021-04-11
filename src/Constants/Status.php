@@ -4,7 +4,12 @@ namespace VIITech\Helpers\Constants;
 
 use BenSampo\Enum\Enum;
 
-abstract class Status extends Enum
+/**
+ * Class Status
+ * @package VIITech\Helpers\Constants
+ */
+class Status extends Enum
 {
+    const INACTIVE = 0;
     const ACTIVE = 1;
 }

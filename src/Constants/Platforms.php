@@ -4,7 +4,11 @@ namespace VIITech\Helpers\Constants;
 
 use BenSampo\Enum\Enum;
 
-abstract class Platforms extends Enum
+/**
+ * Class Platforms
+ * @package VIITech\Helpers\Constants
+ */
+class Platforms extends Enum
 {
     const WEB = "web";
     const ANDROID = "android";

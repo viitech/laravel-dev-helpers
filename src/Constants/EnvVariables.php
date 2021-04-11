@@ -4,7 +4,11 @@ namespace VIITech\Helpers\Constants;
 
 use BenSampo\Enum\Enum;
 
-abstract class EnvVariables extends Enum
+/**
+ * Class EnvVariables
+ * @package VIITech\Helpers\Constants
+ */
+class EnvVariables extends Enum
 {
     const APP_TIMEZONE = "APP_TIMEZONE";
     const DEBUGGER_LOGS_ENABLED = "DEBUGGER_LOGS_ENABLED";
