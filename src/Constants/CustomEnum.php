@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Constants;
+namespace VIITech\Helpers\Constants;
 
 use App\Helpers;
 use BenSampo\Enum\Enum;
@@ -8,7 +8,7 @@ use VIITech\Helpers\GlobalHelpers;
 
 /**
  * Class CustomEnum
- * @package App\Constants
+ * @package VIITech\Helpers\Constants
  */
 class CustomEnum extends Enum
 {

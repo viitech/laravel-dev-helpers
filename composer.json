@@ -47,7 +47,8 @@
     "extra": {
         "laravel": {
             "dont-discover": [
-                "dingo/api"
+                "dingo/api",
+                "laravelista/lumen-vendor-publish"
             ]
         }
     }
