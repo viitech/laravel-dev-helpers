@@ -49,7 +49,7 @@ class GlobalHelpers
      * Get Readable Text
      */
     static function readableText($text){
-        return ucwords(strtolower(str_replace("_", " ", $text)));
+        return ucwords(strtolower(str_replace("_", " ", str_replace("-", " ", $text))));
     }
 
     /**
@@ -726,18 +726,6 @@ class GlobalHelpers
             return GlobalHelpers::formattedJSONResponse($validator->errors()->first(), null, $validator->errors(), $error_status_code);
         }
         return true;
-    }
-
-    /**
-     * Readable Text
-     * @param string $value
-     * @return string
-     */
-    public static function readableText($value){
-        if(!is_string($value)){
-            return $value;
-        }
-        return ucfirst(Str::lower(str_replace("-", " ", $value)));
     }
 
     /**
