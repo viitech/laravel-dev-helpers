@@ -62,6 +62,15 @@ class GlobalHelpers
     }
 
     /**
+     * Is Beta Environment
+     * @return bool
+     */
+    public static function isBetaEnv()
+    {
+        return static::checkEnvironment(Environments::BETA);
+    }
+
+    /**
      * Is Production Environment
      * @return bool
      */
@@ -256,9 +265,9 @@ class GlobalHelpers
 	public static function getReadableBoolean($bool, $fallback = "")
 	{
 		try {
-			if ($bool === 0) {
+			if ($bool === 0 || $bool === false) {
 				return "No";
-			} else if ($bool === 1) {
+			} else if ($bool === 1 || $bool === true) {
 				return "Yes";
 			} else {
 				return $fallback;
