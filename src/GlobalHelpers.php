@@ -830,5 +830,70 @@ class GlobalHelpers
     public static function queueConnection(){
         return GlobalHelpers::isDevelopmentEnv() ? "sync" : env(EnvVariables::QUEUE_DRIVER, "sqs");
     }
+
+    /**
+     * Nullify Variable
+     * @param $variable
+     * @return mixed|null
+     */
+    public static function nullifyVariable($variable){
+        if($variable === "null"){
+            return null;
+        }
+        return $variable;
+    }
+
+    /**
+     * Replace Slashes
+     * @param $text
+     * @return string
+     */
+    static function replaceSlashes($text){
+        $text = str_replace("\\", " ", $text);
+        return str_replace("/", " ", $text);
+    }
+
+    /**
+     * Convert String
+     * @param string $text
+     * @return boolean
+     */
+    public static function convertStringToBoolean($text)
+    {
+        if(is_bool($text)){
+            return $text;
+        }elseif($text === "y" || $text === "yes" || $text === true || $text === "true" || $text === "1" || $text === 1){
+            return true;
+        } else{
+            return false;
+        }
+    }
+
+    /**
+     * Resolve
+     * @param $key
+     * @param $fallback
+     * @return mixed
+     */
+    public static function resolve($key, $fallback = null){
+        try {
+            return resolve($key);
+        } catch (Exception $e) {
+            return $fallback;
+        }
+    }
+
+    /**
+     * Convert String to Integer
+     * @param $string
+     * @return mixed
+     */
+    static function convertStringToInteger($string){
+        try {
+            return intval($string);
+        } catch (Exception $e) {
+            return $string;
+        }
+    }
 }
 
