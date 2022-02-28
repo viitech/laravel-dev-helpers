@@ -9,6 +9,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Str;
 use VIITech\Helpers\Constants\Attributes;
+use VIITech\Helpers\Constants\EnvVariables;
 
 /**
  * Google Helpers
