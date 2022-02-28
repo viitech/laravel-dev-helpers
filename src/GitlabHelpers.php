@@ -36,7 +36,7 @@ class GitlabHelpers
      */
     public static function initClient($api_url, $auth_token)
     {
-        return Client::create($api_url)->authenticate($auth_token, Client::AUTH_URL_TOKEN);
+        return Client::create($api_url)->authenticate($auth_token, "auth_url_token");
     }
 
     /**

@@ -5,6 +5,7 @@ namespace VIITech\Helpers\Middleware;
 use Closure;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use VIITech\Helpers\Constants\DebuggerLevels;
 use VIITech\Helpers\Constants\EnvVariables;
 use VIITech\Helpers\GlobalHelpers;
@@ -28,7 +29,7 @@ class ForceHttpsMiddleware
                 $https = $request->server("HTTPS");
                 if (empty($https) || strtolower($https) == "off") {
                     // take SSL termination behind a proxy into account
-                    if (!starts_with($url, 'https:')) {
+                    if (!Str::startsWith($url, 'https:')) {
                         // replace the protocol and then return a redirect
                         return redirect(str_replace("http:", "https:", $url));
                     }

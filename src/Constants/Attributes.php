@@ -24,4 +24,14 @@ class Attributes extends Enum
     const UPDATED_AT = "updated_at";
     const DELETED_AT = "deleted_at";
     const UUID = "uuid";
+    const GOOGLE_EVENTS = "google_events";
+    const DELETED_EVENTS = "deleted_events";
+    const TITLE = "title";
+    const LOCATION = "location";
+    const DESCRIPTION = "description";
+    const GOOGLE_EVENT_ID = "google_event_id";
+    const ALL_DAY = "all_day";
+    const END_DATE = "end_date";
+    const START_DATE = "start_date";
+    const CLIENT_ID = "client_id";
 }

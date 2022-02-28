@@ -2,10 +2,9 @@
 
 namespace VIITech\Helpers;
 
-use App\Models\CustomModel;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
 use VIITech\Helpers\Constants\Headers;
 use Dingo\Api\Contract\Http\Request;
 use DOMDocument, DOMXPath, Exception;
@@ -792,6 +791,44 @@ class GlobalHelpers
             return $_GET[$attribute];
         }
         return "";
+    }
+
+    /**
+     * Now
+     * @param int $add_years
+     * @param int $add_months
+     * @param int $add_days
+     * @param int $add_hours
+     * @return string
+     */
+    static function now($date = null, $format = null, $add_years = 0, $add_months = 0, $add_days = 0, $add_hours = 0){
+        if(is_null($date)){
+            $date = Carbon::now()->addYears($add_years)->addmonths($add_months)->addDays($add_days)->addHours($add_hours);
+        }else{
+            $date = Carbon::parse($date)->addYears($add_years)->addmonths($add_months)->addDays($add_days);
+        }
+        if(!is_null($format)){
+            return $date->format($format);
+        }
+        return $date->format("Y-m-d") . "T" . $date->format("H:m:s") . ".969Z";
+    }
+
+
+    /**
+     * Readable boolean
+     * @param $bool
+     * @return string
+     */
+    static function readableBoolean($bool){
+        return $bool ? "Yes" : "No";
+    }
+
+    /**
+     * Queue Connection
+     * @return mixed|string
+     */
+    public static function queueConnection(){
+        return GlobalHelpers::isDevelopmentEnv() ? "sync" : env(EnvVariables::QUEUE_DRIVER, "sqs");
     }
 }
 
