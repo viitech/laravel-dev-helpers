@@ -10,6 +10,7 @@ use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Str;
 use VIITech\Helpers\Constants\Attributes;
 use VIITech\Helpers\Constants\EnvVariables;
+use VIITech\Helpers\Constants\Values;
 
 /**
  * Google Helpers
@@ -111,9 +112,9 @@ class GoogleHelpers
 
         if(GlobalHelpers::isValidObject($json_response) && GlobalHelpers::isValidObject($json_response->items)) {
 
-            $timezone = $json_response->timeZone;
-            if(!GlobalHelpers::isValidVariable($timezone)){
-                $timezone = "UTC";
+            $calendar_timezone = $json_response->timeZone;
+            if(!GlobalHelpers::isValidVariable($calendar_timezone)){
+                $calendar_timezone = Values::DEFAULT_TIMEZONE;
             }
 
             foreach ($json_response->items as $event) {
@@ -135,16 +136,18 @@ class GoogleHelpers
                 $end_date = null;
 
                 if(isset($event->start->dateTime)) {
+                    $timezone = $event->end->timeZone ?? $calendar_timezone;
                     $start_date = Carbon::parse($event->start->dateTime, $timezone);
                 }else if(isset($event->start->date)) {
-                    $start_date = Carbon::parse($event->start->date, $timezone);
+                    $start_date = Carbon::parse($event->start->date, $calendar_timezone);
                 }
 
                 if(isset($event->end->dateTime)) {
+                    $timezone = $event->end->timeZone ?? $calendar_timezone;
                     $end_date = Carbon::parse($event->end->dateTime, $timezone);
                 }else if(isset($event->end->date)) {
                     // Reason of that that Google API returns the next day as if the day is 24 hours not 23:59:59. It causes incorrect data in the app
-                    $end_date = Carbon::parse($event->end->date, $timezone)->subSecond()->hour(0)->minute(0)->second(0);
+                    $end_date = Carbon::parse($event->end->date, $calendar_timezone)->subSecond()->hour(0)->minute(0)->second(0);
                 }
 
                 if(is_null($start_date)){
@@ -184,7 +187,8 @@ class GoogleHelpers
 
         return [
             Attributes::GOOGLE_EVENTS => $calendar_events_array,
-            Attributes::DELETED_EVENTS => $deleted_events_array->values()->unique()->toArray()
+            Attributes::DELETED_EVENTS => $deleted_events_array->values()->unique()->toArray(),
+            Attributes::TIMEZONE => $calendar_timezone ?? Values::DEFAULT_TIMEZONE
         ];
 
     }

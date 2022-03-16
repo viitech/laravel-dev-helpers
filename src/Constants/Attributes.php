@@ -23,6 +23,7 @@ class Attributes extends Enum
     const CREATED_AT = "created_at";
     const UPDATED_AT = "updated_at";
     const DELETED_AT = "deleted_at";
+    const TIMEZONE = "timezone";
     const UUID = "uuid";
     const GOOGLE_EVENTS = "google_events";
     const DELETED_EVENTS = "deleted_events";
