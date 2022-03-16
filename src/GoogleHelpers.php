@@ -153,18 +153,18 @@ class GoogleHelpers
                     continue;
                 }
 
-                $end_date = $end_date->endOfDay();
+                // review this logic
+                if(isset($event->start->date) && isset($event->end->date)){
+                    $all_day = true;
+                }
+
+                if($all_day){
+                    $start_date = $start_date->startOfDay();
+                    $end_date = $end_date->endOfDay();
+                }
 
                 $start_date_formatted = $start_date->format("c");
                 $end_date_formatted = $end_date->format("c");
-
-                if($start_date_formatted == $end_date_formatted){
-                    $all_day = true;
-                }else if(isset($event->start->date) && isset($event->end->date)){
-                    $all_day = true;
-                }else if($start_date->format("H:m") == $end_date->format("H:m")){
-                    $all_day = true;
-                }
 
                 $location = $event->location ?? null;
                 $description = $event->description ?? null;
