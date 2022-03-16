@@ -9,6 +9,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Str;
 use VIITech\Helpers\Constants\Attributes;
+use VIITech\Helpers\Constants\CarbonFormat;
 use VIITech\Helpers\Constants\EnvVariables;
 use VIITech\Helpers\Constants\Values;
 
@@ -120,7 +121,7 @@ class GoogleHelpers
             foreach ($json_response->items as $event) {
 
                 // delete the event
-                if(isset($event->status) && $event->status == "cancelled"){
+                if(isset($event->status) && $event->status == Attributes::CANCELLED){
                     $deleted_events_array->add($event->id);
                     continue;
                 }
@@ -134,17 +135,18 @@ class GoogleHelpers
 
                 $start_date = null;
                 $end_date = null;
+                $event_timezone = $calendar_timezone;
 
                 if(isset($event->start->dateTime)) {
-                    $timezone = $event->end->timeZone ?? $calendar_timezone;
-                    $start_date = Carbon::parse($event->start->dateTime, $timezone);
+                    $event_timezone = $event->end->timeZone ?? $calendar_timezone;
+                    $start_date = Carbon::parse($event->start->dateTime, $event_timezone);
                 }else if(isset($event->start->date)) {
                     $start_date = Carbon::parse($event->start->date, $calendar_timezone);
                 }
 
                 if(isset($event->end->dateTime)) {
-                    $timezone = $event->end->timeZone ?? $calendar_timezone;
-                    $end_date = Carbon::parse($event->end->dateTime, $timezone);
+                    $event_timezone = $event->end->timeZone ?? $calendar_timezone;
+                    $end_date = Carbon::parse($event->end->dateTime, $event_timezone);
                 }else if(isset($event->end->date)) {
                     // Reason of that that Google API returns the next day as if the day is 24 hours not 23:59:59. It causes incorrect data in the app
                     $end_date = Carbon::parse($event->end->date, $calendar_timezone)->subSecond()->hour(0)->minute(0)->second(0);
@@ -166,8 +168,8 @@ class GoogleHelpers
                     $end_date = $end_date->endOfDay();
                 }
 
-                $start_date_formatted = $start_date->format("c");
-                $end_date_formatted = $end_date->format("c");
+                $start_date_formatted = $start_date->format(CarbonFormat::C);
+                $end_date_formatted = $end_date->format(CarbonFormat::C);
 
                 $location = $event->location ?? null;
                 $description = $event->description ?? null;
@@ -180,6 +182,7 @@ class GoogleHelpers
                     Attributes::DESCRIPTION => $description,
                     Attributes::LOCATION => $location,
                     Attributes::TITLE => $name,
+                    Attributes::TIMEZONE => $event_timezone
                 ];
             }
 

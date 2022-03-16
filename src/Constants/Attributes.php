@@ -20,6 +20,7 @@ class Attributes extends Enum
     const DATA = "data";
     const ERROR = "error";
     const DATE = "date";
+    const CANCELLED = "cancelled";
     const CREATED_AT = "created_at";
     const UPDATED_AT = "updated_at";
     const DELETED_AT = "deleted_at";
