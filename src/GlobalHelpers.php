@@ -3,8 +3,11 @@
 namespace VIITech\Helpers;
 
 use Carbon\Carbon;
+use Dingo\Api\Routing\Helpers;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 use VIITech\Helpers\Constants\Headers;
 use Dingo\Api\Contract\Http\Request;
 use DOMDocument, DOMXPath, Exception;
@@ -851,6 +854,45 @@ class GlobalHelpers
     static function replaceSlashes($text){
         $text = str_replace("\\", " ", $text);
         return str_replace("/", " ", $text);
+    }
+
+    /**
+     * Is Valid Email
+     * @param $email
+     * @param array $valid_domains
+     * @param array $invalid_domains
+     * @return bool
+     */
+    static function isValidEmail($email, $valid_domains = [], $invalid_domains = []){
+        try {
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                return false;
+            }
+            // validate mx record
+            $domain = substr($email, strpos($email, '@') + 1);
+            if(!empty($valid_domains) && in_array($domain, $valid_domains)){
+                return true;
+            }else if(!empty($invalid_domains) && in_array($domain, $invalid_domains)){
+                return false;
+            }else if (checkdnsrr($domain, "MX") === false) {
+                return false;
+            }
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
+    /**
+     * Trim and Lower String
+     * @param mixed $value
+     * @param mixed $sanitize_filter
+     */
+    static function trimAndLowerString(&$value, $sanitize_filter = null){
+        if($sanitize_filter){
+            filter_var($value, $sanitize_filter);
+        }
+        $value = trim(Str::lower($value));
     }
 
     /**
