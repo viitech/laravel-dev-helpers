@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use VIITech\Helpers\GlobalHelpers;
 
 /**
- * Class GlobalHelpers
+ * Class DownloadBackup
  * @package VIITech\Helpers\Console
  */
 class DownloadBackup extends Command
@@ -18,7 +18,7 @@ class DownloadBackup extends Command
      *
      * @var string
      */
-    protected $signature = 'backup:download {name} {--production}';
+    protected $signature = 'backup:download {name} {--production} {--silent}';
 
     /**
      * The console command description.
@@ -38,6 +38,7 @@ class DownloadBackup extends Command
 
         $name = $this->argument("name");
         $production = $this->option("production");
+        $silent = $this->option("silent");
         $env = $production ? "production" : null;
 
         if($name == "latest"){
@@ -46,19 +47,28 @@ class DownloadBackup extends Command
             $name = collect($list)->last();
         }
 
+        if(is_null($name)){
+            dd("Unable to find the backup file remotely");
+        }
+
         $file_name = "backups/" . basename($name);
         $file = Storage::disk("local")->exists($file_name);
-        if($file){
+        if($file && !$silent){
             dd("File already exists locally storage/" . $file_name);
         }
-        $ask = $this->ask('Are you sure?');
-        if($ask != "y" && $ask != "yes" && $ask != "ee"){
-            dd("Okay");
+
+        if(!$silent){
+            $ask = $this->ask('Are you sure?');
+            if($ask != "y" && $ask != "yes" && $ask != "ee") {
+                dd("Okay");
+            }
         }
+
         $file = Storage::disk("s3_backup")->get($name);
         if(!$file){
             dd("File doesnt exist in S3");
         }
+
         $downloaded = Storage::disk("local")->put($file_name, $file);
         if($downloaded){
             $this->info("File is downloaded to storage/" . $file_name);
