@@ -9,6 +9,10 @@ use Dingo\Api\Routing\Router;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 
+/**
+ * Class DingoRoutesList
+ * @package VIITech\Helpers\Console
+ */
 class DingoRoutesList extends RouteListCommand
 {
     /**

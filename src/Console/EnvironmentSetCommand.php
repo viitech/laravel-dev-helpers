@@ -6,6 +6,10 @@ use Illuminate\Support\Str;
 use InvalidArgumentException;
 use Illuminate\Console\Command;
 
+/**
+ * Class EnvironmentSetCommand
+ * @package VIITech\Helpers\Console
+ */
 class EnvironmentSetCommand extends Command
 {
     /**

@@ -23,4 +23,6 @@ class EnvVariables extends Enum
     const SLACK_WEBHOOK_URL = "SLACK_WEBHOOK_URL";
     const QUEUE_DRIVER = "QUEUE_DRIVER";
     const GOOGLE_CALENDAR_API = "GOOGLE_CALENDAR_API";
+    const APP_STAGE = "APP_STAGE";
+    const APP_ENV = "APP_ENV";
 }

@@ -11,6 +11,10 @@ use Illuminate\Routing\Router;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 
+/**
+ * Class RouteListCommand
+ * @package VIITech\Helpers\Console
+ */
 class RouteListCommand extends Command
 {
     /**

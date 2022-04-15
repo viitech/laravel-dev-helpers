@@ -3,13 +3,11 @@
 namespace VIITech\Helpers;
 
 use Carbon\Carbon;
-use Dingo\Api\Routing\Helpers;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Arr;
+use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use VIITech\Helpers\Constants\Headers;
-use Dingo\Api\Contract\Http\Request;
 use DOMDocument, DOMXPath, Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
@@ -26,8 +24,40 @@ use VIITech\Helpers\Constants\Platforms;
 use VIITech\Helpers\Requests\CustomRequest;
 use Webpatser\Uuid\Uuid;
 
+/**
+ * Class GlobalHelpers
+ * @package VIITech\Helpers
+ */
 class GlobalHelpers
 {
+
+    /**
+     * Log Request
+     * @param $request
+     * @param $message
+     * @param bool $is_json
+     * @return void
+     */
+    static function logRequest($request, $message, $is_json = true){
+        GlobalHelpers::debugger($message, DebuggerLevels::INFO);
+        if($is_json){
+            GlobalHelpers::debugger(json_encode($request->getContent(), true), DebuggerLevels::INFO);
+        }
+        GlobalHelpers::debugger(json_encode($request->all(), true), DebuggerLevels::INFO);
+    }
+
+    /**
+     * Create Request Object
+     * @param array $data
+     * @return Request
+     */
+    static function createRequestObject($data = [])
+    {
+        $request = new Request();
+        $request->replace($data);
+        return $request;
+    }
+
     /**
      * Check Environment (local, dev, staging, production)
      * @param string $app_env
@@ -170,7 +200,7 @@ class GlobalHelpers
     {
         try {
             foreach ($array AS $index => $value) {
-                $array[$index] = !is_integer($value) ? (int) $value : $value;;
+                $array[$index] = !is_integer($value) ? (int) $value : $value;
             }
         } catch (Exception $e) {
             return null;
@@ -180,7 +210,7 @@ class GlobalHelpers
 
     /**
      * Get Value From HTTP Request
-     * @param \Illuminate\Http\Request|Request|Collection|array $request
+     * @param Request|\Dingo\Api\Http\Request|Collection|array $request
      * @param string $key
      * @param mixed $default
      * @param mixed $type
@@ -700,14 +730,14 @@ class GlobalHelpers
      * Create API Request Object
      * @param array $data
      * @param bool $dingo_api
-     * @return \Dingo\Api\Http\Request|\Illuminate\Http\Request
+     * @return \Dingo\Api\Http\Request|Request
      */
     public static function createAPIRequestObject($data = [], $dingo_api = true)
     {
         if($dingo_api){
             $request = new \Dingo\Api\Http\Request();
         }else{
-            $request = new \Illuminate\Http\Request();
+            $request = new Request();
         }
         $request->replace($data);
         return $request;
@@ -715,7 +745,7 @@ class GlobalHelpers
 
     /**
      * Is Platform Mobile
-     * @param Request|\Illuminate\Http\Request $request
+     * @param \Dingo\Api\Http\Request|Request $request
      * @return bool
      */
     public static function isPlatformMobile($request){
@@ -724,9 +754,21 @@ class GlobalHelpers
     }
 
     /**
+     * Get Application Name with Env
+     * @return string
+     */
+    public static function getApplicationNameWithEnv($env = null){
+        if(is_null($env)){
+            $env = env(EnvVariables::APP_STAGE, env(EnvVariables::APP_ENV, "Unknown"));
+        }
+        $name = config('app.name') . '-' . ucfirst($env);
+        return str_replace(" ","-", $name);
+    }
+
+    /**
      * Validate Requests
      * @param CustomRequest $formRequest
-     * @param \Dingo\Api\Http\Request|\Illuminate\Http\Request $request
+     * @param \Dingo\Api\Http\Request|Request $request
      * @param int $error_status_code
      * @return bool|JsonResponse
      */
@@ -774,7 +816,7 @@ class GlobalHelpers
 
     /**
      * Offset Unset Attributes from Request
-     * @param \Illuminate\Http\Request $request
+     * @param \Dingo\Api\Http\Request|Request $request
      * @param $array
      */
     static function offsetUnsetAttributesFromRequest(&$request, $array)
@@ -896,7 +938,7 @@ class GlobalHelpers
     }
 
     /**
-     * Convert String
+     * Convert String to Boolean
      * @param string $text
      * @return boolean
      */
