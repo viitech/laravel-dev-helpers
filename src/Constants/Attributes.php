@@ -36,4 +36,6 @@ class Attributes extends Enum
     const END_DATE = "end_date";
     const START_DATE = "start_date";
     const CLIENT_ID = "client_id";
+    const VAT_PERCENTAGE = "vat_percentage";
+    const VAT_AMOUNT = "vat_amount";
 }

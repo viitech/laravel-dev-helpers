@@ -25,4 +25,5 @@ class EnvVariables extends Enum
     const GOOGLE_CALENDAR_API = "GOOGLE_CALENDAR_API";
     const APP_STAGE = "APP_STAGE";
     const APP_ENV = "APP_ENV";
+    const NEW_YEAR = "NEW_YEAR";
 }

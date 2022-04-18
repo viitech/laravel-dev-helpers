@@ -21,6 +21,7 @@ use VIITech\Helpers\Constants\DebuggerLevels;
 use VIITech\Helpers\Constants\Environments;
 use VIITech\Helpers\Constants\EnvVariables;
 use VIITech\Helpers\Constants\Platforms;
+use VIITech\Helpers\Constants\Values;
 use VIITech\Helpers\Requests\CustomRequest;
 use Webpatser\Uuid\Uuid;
 
@@ -866,6 +867,38 @@ class GlobalHelpers
      */
     static function readableBoolean($bool){
         return $bool ? "Yes" : "No";
+    }
+
+    /**
+     * Calculate VAT
+     * @return array
+     */
+    static function calculateVAT($fee, $today = null, $timezone = Values::DEFAULT_TIMEZONE){
+        $new_year = Carbon::parse(env(EnvVariables::NEW_YEAR, "2022-01-01"), $timezone)->startOfDay();
+        if(is_null($today)){
+            $today = Carbon::today($timezone);
+        }
+        if($new_year->diffInDays($today, false) >= 0){
+            $vat_percentage = ( 0.10 / 1.1 );
+        }else{
+            $vat_percentage = ( 0.05 / 1.05 );
+        }
+        return [
+            Attributes::VAT_AMOUNT => round( ( $vat_percentage * $fee), 3 ),
+            Attributes::VAT_PERCENTAGE => $vat_percentage,
+        ];
+    }
+
+    /**
+     * Convert Boolean to Integer
+     * @param $val
+     * @return int
+     */
+    static function convertBooleanToInteger($val){
+        if($val === "false" || $val === false || $val === 0 || $val === "0"){
+            return 0;
+        }
+        return 1;
     }
 
     /**
