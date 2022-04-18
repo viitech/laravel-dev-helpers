@@ -107,7 +107,7 @@ class RestoreBackupCommand extends Command
         // get file path
         $file_full_path = Storage::disk("local")->path($file_path);
         if(Str::contains($file_full_path, ".zip") || Str::contains($file_full_path, ".gz")){
-            dd("Compress the file first");
+            dd("Decompress the file first");
         }
 
         // import
