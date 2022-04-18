@@ -866,7 +866,11 @@ class GlobalHelpers
      * @return string
      */
     static function readableBoolean($bool){
-        return $bool ? "Yes" : "No";
+        if($bool === true || $bool === 1){
+            return "Yes";
+        } else{
+            return "No";
+        }
     }
 
     /**
@@ -903,10 +907,28 @@ class GlobalHelpers
 
     /**
      * Queue Connection
+     * @param $connection
      * @return mixed|string
      */
-    public static function queueConnection(){
+    public static function queueConnection($connection){
+        if(!is_null($connection)){
+            return $connection;
+        }
         return GlobalHelpers::isDevelopmentEnv() ? "sync" : env(EnvVariables::QUEUE_DRIVER, "sqs");
+    }
+
+    /**
+     * Resolve
+     * @param $key
+     * @param $fallback
+     * @return mixed
+     */
+    public static function resolve($key, $fallback = null){
+        try {
+            return resolve($key);
+        } catch (Exception $e) {
+            return $fallback;
+        }
     }
 
     /**
@@ -983,20 +1005,6 @@ class GlobalHelpers
             return true;
         } else{
             return false;
-        }
-    }
-
-    /**
-     * Resolve
-     * @param $key
-     * @param $fallback
-     * @return mixed
-     */
-    public static function resolve($key, $fallback = null){
-        try {
-            return resolve($key);
-        } catch (Exception $e) {
-            return $fallback;
         }
     }
 

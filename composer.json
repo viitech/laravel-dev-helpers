@@ -32,7 +32,9 @@
         "dingo/api": "0.*|1.*|2.*|3.*",
         "webpatser/laravel-uuid": "3.*|4.*",
         "ext-json": "*",
-        "ext-dom": "*"
+        "ext-dom": "*",
+        "ext-zlib": "*",
+        "zanysoft/laravel-zip": "^1.0"
     },
     "suggest": {
         "dingo/blueprint": "API Blueprint documentation generator."
