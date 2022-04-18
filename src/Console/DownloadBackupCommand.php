@@ -8,10 +8,10 @@ use Illuminate\Support\Facades\Storage;
 use VIITech\Helpers\GlobalHelpers;
 
 /**
- * Class DownloadBackup
+ * Class DownloadBackupCommand
  * @package VIITech\Helpers\Console
  */
-class DownloadBackup extends Command
+class DownloadBackupCommand extends Command
 {
     /**
      * The name and signature of the console command.

@@ -12,10 +12,10 @@ use ZanySoft\Zip\Zip;
 use ZanySoft\Zip\ZipManager;
 
 /**
- * Class RestoreBackup
+ * Class RestoreBackupCommand
  * @package VIITech\Helpers\Console
  */
-class RestoreBackup extends Command
+class RestoreBackupCommand extends Command
 {
     /**
      * The name and signature of the console command.
@@ -51,7 +51,7 @@ class RestoreBackup extends Command
         $file_path = $this->argument("file_name");
         if($file_path == "latest") {
             $backup_files = Storage::disk("local")->files("backups");
-            $backup_file_index = Helpers::findFileInArray($backup_files);
+            $backup_file_index = $this->findFileInArray($backup_files);
             if(is_null($backup_file_index)){
                 dd("Unable to find the backup file");
             }
