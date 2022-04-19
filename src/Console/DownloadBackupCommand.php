@@ -42,7 +42,7 @@ class DownloadBackupCommand extends Command
         $env = $production ? "production" : null;
 
         if($name == "latest"){
-            $backup_folder = config('backup.name');
+            $backup_folder = config('backup.backup.name');
             if(empty($backup_folder)){
                 $backup_folder = GlobalHelpers::getApplicationNameWithEnv($env);
             }
