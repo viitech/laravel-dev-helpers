@@ -9,6 +9,7 @@ use Spatie\Backup\Notifications\Notifications\HealthyBackupWasFound;
 use Spatie\Backup\Notifications\Notifications\UnhealthyBackupWasFound;
 use Spatie\Backup\Tasks\Cleanup\Strategies\DefaultStrategy;
 use VIITech\Helpers\Constants\EnvVariables;
+use VIITech\Helpers\GlobalHelpers;
 
 return [
 
@@ -18,7 +19,7 @@ return [
          * The name of this application. You can use this name to monitor
          * the backups.
          */
-        'name' => config('app.name'),
+        'name' => GlobalHelpers::getApplicationNameWithEnv(),
 
         'source' => [
 

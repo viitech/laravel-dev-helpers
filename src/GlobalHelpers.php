@@ -874,6 +874,47 @@ class GlobalHelpers
     }
 
     /**
+     * Convert to Collection
+     * @param $data
+     * @return Collection
+     */
+    static function convertToCollection($data){
+        if(!is_a($data, Collection::class) || !is_a($data, \Illuminate\Database\Eloquent\Collection::class) ){
+            return collect($data);
+        }
+        return $data;
+    }
+
+    /**
+     * Three Decimal Number String
+     * @param $number
+     * @param bool $null_if_zero
+     * @return string|null
+     */
+    public static function threeDecimalNumberString($number, $null_if_zero = false)
+    {
+        if(is_null($number)){
+            return null;
+        }else if($null_if_zero && $number === 0){
+            return null;
+        }
+        return number_format((float)$number, 3, '.', '');
+    }
+
+    /**
+     * Convert to String
+     * @param $value
+     * @return string
+     */
+    static function convertToString($value){
+        try {
+            return (string) $value;
+        } catch (Exception $e) {
+            return $value;
+        }
+    }
+
+    /**
      * Calculate VAT
      * @return array
      */
@@ -883,9 +924,9 @@ class GlobalHelpers
             $today = Carbon::today($timezone);
         }
         if($new_year->diffInDays($today, false) >= 0){
-            $vat_percentage = ( 0.10 / 1.1 );
+            $vat_percentage = 0.10;
         }else{
-            $vat_percentage = ( 0.05 / 1.05 );
+            $vat_percentage = 0.05;
         }
         return [
             Attributes::VAT_AMOUNT => round( ( $vat_percentage * $fee), 3 ),
