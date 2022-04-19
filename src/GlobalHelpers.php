@@ -889,16 +889,17 @@ class GlobalHelpers
      * Three Decimal Number String
      * @param $number
      * @param bool $null_if_zero
+     * @param bool $decimals
      * @return string|null
      */
-    public static function threeDecimalNumberString($number, $null_if_zero = false)
+    public static function threeDecimalNumberString($number, $null_if_zero = false, $decimals = 3)
     {
         if(is_null($number)){
             return null;
         }else if($null_if_zero && $number === 0){
             return null;
         }
-        return number_format((float)$number, 3, '.', '');
+        return number_format((float)$number, $decimals, '.', '');
     }
 
     /**
