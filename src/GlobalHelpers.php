@@ -873,6 +873,10 @@ class GlobalHelpers
         }
     }
 
+    static function convertToCollection($array){
+
+    }
+
     /**
      * Calculate VAT
      * @return array
@@ -883,9 +887,9 @@ class GlobalHelpers
             $today = Carbon::today($timezone);
         }
         if($new_year->diffInDays($today, false) >= 0){
-            $vat_percentage = round( 0.10 / 1.1 );
+            $vat_percentage = ( 0.10 / 1.1 );
         }else{
-            $vat_percentage = round( 0.05 / 1.05 );
+            $vat_percentage = ( 0.05 / 1.05 );
         }
         return [
             Attributes::VAT_AMOUNT => round( ( $vat_percentage * $fee), 3 ),
