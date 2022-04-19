@@ -873,8 +873,45 @@ class GlobalHelpers
         }
     }
 
-    static function convertToCollection($array){
+    /**
+     * Convert to Collection
+     * @param $data
+     * @return Collection
+     */
+    static function convertToCollection($data){
+        if(!is_a($data, Collection::class) || !is_a($data, \Illuminate\Database\Eloquent\Collection::class) ){
+            return collect($data);
+        }
+        return $data;
+    }
 
+    /**
+     * Three Decimal Number String
+     * @param $number
+     * @param bool $null_if_zero
+     * @return string|null
+     */
+    public static function threeDecimalNumberString($number, $null_if_zero = false)
+    {
+        if(is_null($number)){
+            return null;
+        }else if($null_if_zero && $number === 0){
+            return null;
+        }
+        return number_format((float)$number, 3, '.', '');
+    }
+
+    /**
+     * Convert to String
+     * @param $value
+     * @return string
+     */
+    static function convertToString($value){
+        try {
+            return (string) $value;
+        } catch (Exception $e) {
+            return $value;
+        }
     }
 
     /**
