@@ -887,12 +887,14 @@ class GlobalHelpers
             $today = Carbon::today($timezone);
         }
         if($new_year->diffInDays($today, false) >= 0){
-            $vat_percentage = ( 0.10 / 1.1 );
+            $vat_percentage = 0.1;
+            $vat_calculation = ( $vat_percentage / 1.1 );
         }else{
-            $vat_percentage = ( 0.05 / 1.05 );
+            $vat_percentage = 0.05;
+            $vat_calculation = ( $vat_percentage / 1.05 );
         }
         return [
-            Attributes::VAT_AMOUNT => round( ( $vat_percentage * $fee), 3 ),
+            Attributes::VAT_AMOUNT => round( ( $vat_calculation * $fee), 3 ),
             Attributes::VAT_PERCENTAGE => $vat_percentage,
         ];
     }
