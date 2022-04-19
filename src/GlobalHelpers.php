@@ -910,7 +910,7 @@ class GlobalHelpers
      * @param $connection
      * @return mixed|string
      */
-    public static function queueConnection($connection){
+    public static function queueConnection($connection = null){
         if(!is_null($connection)){
             return $connection;
         }
