@@ -889,7 +889,7 @@ class GlobalHelpers
      * Three Decimal Number String
      * @param $number
      * @param bool $null_if_zero
-     * @param bool $decimals
+     * @param int $decimals
      * @return string|null
      */
     public static function threeDecimalNumberString($number, $null_if_zero = false, $decimals = 3)
