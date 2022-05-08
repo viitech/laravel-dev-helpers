@@ -930,8 +930,8 @@ class GlobalHelpers
             $vat_percentage = ( 0.05 / 1.05 );
         }
         return [
-            Attributes::VAT_AMOUNT => round( ( $vat_percentage * $fee), 3 ),
-            Attributes::VAT_PERCENTAGE => $vat_percentage,
+            Attributes::VAT_AMOUNT => round( ( $vat_percentage * $fee), 2 ),
+            Attributes::VAT_PERCENTAGE => round($vat_percentage, 2),
         ];
     }
 
