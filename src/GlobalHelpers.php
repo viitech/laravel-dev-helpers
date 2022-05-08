@@ -919,7 +919,7 @@ class GlobalHelpers
      * Calculate VAT
      * @return array
      */
-    static function calculateVAT($fee, $today = null, $timezone = Values::DEFAULT_TIMEZONE){
+    static function calculateVAT($fee, $today = null, $timezone = Values::DEFAULT_TIMEZONE, $precision = 3){
         $new_year = Carbon::parse(env(EnvVariables::NEW_YEAR, "2022-01-01"), $timezone)->startOfDay();
         if(is_null($today)){
             $today = Carbon::today($timezone);
@@ -930,8 +930,8 @@ class GlobalHelpers
             $vat_percentage = ( 0.05 / 1.05 );
         }
         return [
-            Attributes::VAT_AMOUNT => round( ( $vat_percentage * $fee), 2 ),
-            Attributes::VAT_PERCENTAGE => round($vat_percentage, 2),
+            Attributes::VAT_AMOUNT => round( ( $vat_percentage * $fee), $precision ),
+            Attributes::VAT_PERCENTAGE => round($vat_percentage, $precision),
         ];
     }
 
