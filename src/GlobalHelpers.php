@@ -919,7 +919,7 @@ class GlobalHelpers
      * Calculate VAT
      * @return array
      */
-    static function calculateVAT($fee, $today = null, $timezone = Values::DEFAULT_TIMEZONE, $precision = 2){
+    static function calculateVAT($fee, $today = null, $timezone = Values::DEFAULT_TIMEZONE, $precision = 3){
         $new_year = Carbon::parse(env(EnvVariables::NEW_YEAR, "2022-01-01"), $timezone)->startOfDay();
         if(is_null($today)){
             $today = Carbon::today($timezone);
