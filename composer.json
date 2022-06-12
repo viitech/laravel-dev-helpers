@@ -34,7 +34,8 @@
         "ext-json": "*",
         "ext-dom": "*",
         "ext-zlib": "*",
-        "zanysoft/laravel-zip": "^1.0"
+        "zanysoft/laravel-zip": "^1.0",
+        "api-ecosystem-for-laravel/dingo-api": "0.*|1.*|2.*|3.*"
     },
     "suggest": {
         "dingo/blueprint": "API Blueprint documentation generator."
