@@ -1,60 +1,73 @@
 {
-    "name": "viitech/laravel-dev-helpers",
-    "description": "Laravel Dev Helper Functions",
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "VII Tech Solutions",
-            "email": "webmaster@viitech.net"
-        }
-    ],
-    "require": {
-        "m4tthumphrey/php-gitlab-api": "9.*|10.*|11.*",
-        "guzzlehttp/guzzle": "6.*|7.*",
-        "sentry/sentry-laravel": "0.*|1.*|2.*",
-        "league/flysystem": "1.*|2.*",
-        "league/flysystem-aws-s3-v3": "1.*|2.*",
-        "spatie/laravel-backup": "5.*|6.*|7.*|8.*",
-        "ramsey/uuid": "3.*|4.*",
-        "laravel/tinker": "1.*|2.*",
-        "laravelista/lumen-vendor-publish": "2.*|6.*|7.*|8.*",
-        "laravelcollective/remote": "5.*|6.*",
-        "symfony/process": "4.*|5.*",
-        "doctrine/dbal": "2.*|3.*",
-        "google/apiclient": "2.*",
-        "aws/aws-sdk-php-laravel": "3.*",
-        "nesbot/carbon": "1.*|2.*",
-        "darkaonline/l5-swagger": "5.*|6.*|7.*|8.*",
-        "bensampo/laravel-enum": "1.*|2.*|3.*|4.*|5.*",
-        "tymon/jwt-auth": "0.*|1.*|2.*",
-        "dingo/api": "0.*|1.*|2.*|3.*",
-        "webpatser/laravel-uuid": "3.*|4.*",
-        "ext-json": "*",
-        "ext-dom": "*",
-        "ext-zlib": "*",
-        "zanysoft/laravel-zip": "^1.0",
-        "api-ecosystem-for-laravel/dingo-api": "0.*|1.*|2.*|3.*"
-    },
-    "suggest": {
-        "dingo/blueprint": "API Blueprint documentation generator."
-    },
-    "require-dev": {
-        "laravel/lumen-framework": "5.*|6.*|7.*|8.*|9.*",
-        "laravel/laravel": "5.*|6.*|7.*|8.*|9.*"
-    },
-    "autoload": {
-        "psr-4": {
-            "VIITech\\Helpers\\": "src/"
-        }
-    },
-    "extra": {
-        "laravel": {
-            "dont-discover": [
-                "dingo/api",
-                "laravelista/lumen-vendor-publish"
-            ]
-        }
+  "name": "viitech/laravel-dev-helpers",
+  "description": "Laravel Dev Helper Functions",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "VII Tech Solutions",
+      "email": "webmaster@viitech.net"
     }
+  ],
+  "require": {
+    "m4tthumphrey/php-gitlab-api": "9.*|10.*|11.*",
+    "guzzlehttp/guzzle": "6.*|7.*",
+    "sentry/sentry-laravel": "0.*|1.*|2.*",
+    "league/flysystem": "1.*|2.*",
+    "league/flysystem-aws-s3-v3": "1.*|2.*",
+    "spatie/laravel-backup": "5.*|6.*|7.*|8.*|9.*",
+    "ramsey/uuid": "3.*|4.*",
+    "laravel/tinker": "1.*|2.*",
+    "laravelista/lumen-vendor-publish": "2.*|6.*|7.*|8.*",
+    "laravelcollective/remote": "5.*|6.*",
+    "symfony/process": "4.*|5.*|6.*",
+    "doctrine/dbal": "2.*|3.*",
+    "google/apiclient": "2.*",
+    "aws/aws-sdk-php-laravel": "3.*",
+    "nesbot/carbon": "1.*|2.*",
+    "darkaonline/l5-swagger": "5.*|6.*|7.*|8.*",
+    "bensampo/laravel-enum": "1.*|2.*|3.*|4.*|5.*",
+    "tymon/jwt-auth": "0.*|1.*|2.*",
+    "webpatser/laravel-uuid": "3.*|4.*",
+    "ext-json": "*",
+    "ext-dom": "*",
+    "ext-zlib": "*",
+    "zanysoft/laravel-zip": "^1.0",
+    "api-ecosystem-for-laravel/dingo-api": "0.*|1.*|2.*|3.*|dev-laravel-9-support"
+  },
+  "suggest": {
+    "dingo/blueprint": "API Blueprint documentation generator."
+  },
+  "require-dev": {
+    "laravel/lumen-framework": "5.*|6.*|7.*|8.*|9.*",
+    "laravel/laravel": "5.*|6.*|7.*|8.*|9.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "VIITech\\Helpers\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "dont-discover": [
+        "dingo/api",
+        "laravelista/lumen-vendor-publish"
+      ]
+    }
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@github.com:christoph-kluge/dingo-api.git"
+    },
+    {
+      "type": "vcs",
+      "url": "git@github.com:dmason30/blueprint.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/annuh/fractal.git"
+    }
+  ]
 }

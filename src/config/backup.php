@@ -1,12 +1,12 @@
 <?php
 
 use Spatie\Backup\Notifications\Notifiable;
-use Spatie\Backup\Notifications\Notifications\BackupHasFailed;
-use Spatie\Backup\Notifications\Notifications\BackupWasSuccessful;
-use Spatie\Backup\Notifications\Notifications\CleanupHasFailed;
-use Spatie\Backup\Notifications\Notifications\CleanupWasSuccessful;
-use Spatie\Backup\Notifications\Notifications\HealthyBackupWasFound;
-use Spatie\Backup\Notifications\Notifications\UnhealthyBackupWasFound;
+use Spatie\Backup\Notifications\Notifications\BackupHasFailedNotification;
+use Spatie\Backup\Notifications\Notifications\BackupWasSuccessfulNotification;
+use Spatie\Backup\Notifications\Notifications\CleanupHasFailedNotification;
+use Spatie\Backup\Notifications\Notifications\CleanupWasSuccessfulNotification;
+use Spatie\Backup\Notifications\Notifications\HealthyBackupWasFoundNotification;
+use Spatie\Backup\Notifications\Notifications\UnhealthyBackupWasFoundNotification;
 use Spatie\Backup\Tasks\Cleanup\Strategies\DefaultStrategy;
 use VIITech\Helpers\Constants\EnvVariables;
 use VIITech\Helpers\GlobalHelpers;
@@ -88,12 +88,12 @@ return [
     'notifications' => [
 
         'notifications' => [
-            BackupHasFailed::class         => ['slack'],
-            UnhealthyBackupWasFound::class => ['slack'],
-            CleanupHasFailed::class        => ['slack'],
-            BackupWasSuccessful::class     => ['slack'],
-            HealthyBackupWasFound::class   => ['slack'],
-            CleanupWasSuccessful::class    => ['slack'],
+            BackupHasFailedNotification::class         => ['slack'],
+            UnhealthyBackupWasFoundNotification::class => ['slack'],
+            CleanupHasFailedNotification::class        => ['slack'],
+            BackupWasSuccessfulNotification::class     => ['slack'],
+            HealthyBackupWasFoundNotification::class   => ['slack'],
+            CleanupWasSuccessfulNotification::class    => ['slack'],
         ],
 
         /*
