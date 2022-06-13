@@ -29,7 +29,7 @@
     "tymon/jwt-auth": "0.*|1.*|2.*",
     "webpatser/laravel-uuid": "3.*|4.*",
     "zanysoft/laravel-zip": "^1.0",
-    "api-ecosystem-for-laravel/dingo-api": "3.*|dev-laravel-9-support"
+    "api-ecosystem-for-laravel/dingo-api": "dev-laravel-9-support"
   },
   "suggest": {
     "dingo/blueprint": "API Blueprint documentation generator."
